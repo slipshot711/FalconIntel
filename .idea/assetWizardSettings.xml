@@ -71,12 +71,23 @@
                                 <PersistentState>
                                   <option name="children">
                                     <map>
+                                      <entry key="backgroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="scalingPercent" value="165" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
                                       <entry key="foregroundImage">
                                         <value>
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="90" />
+                                                <entry key="scalingPercent" value="82" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -87,19 +98,16 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="0089b7" />
-                                      <entry key="foregroundImage" value="$PROJECT_DIR$/app/logo v2.png" />
+                                      <entry key="backgroundImage" value="$PROJECT_DIR$/download.jpeg" />
+                                      <entry key="backgroundLayerName" value="ic_launcher_gradient" />
+                                      <entry key="foregroundImage" value="$PROJECT_DIR$/app/src/main/res/drawable/ic_falcn.xml" />
+                                      <entry key="previewDensity" value="HIGH" />
                                     </map>
                                   </option>
                                 </PersistentState>
                               </value>
                             </entry>
-                          </map>
-                        </option>
-                        <option name="values">
-                          <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>
@@ -122,7 +130,7 @@
                           <map>
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="height" value="100" />
-                            <entry key="outputName" value="ic_falcnlogov2" />
+                            <entry key="outputName" value="ic_falcn" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="$PROJECT_DIR$/falcnlogov2.svg" />
                             <entry key="width" value="201" />

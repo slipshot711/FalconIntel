@@ -39,7 +39,7 @@ public class MAS_A extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!TextUtils.isEmpty(alloyName.getText()) && !TextUtils.isEmpty(meltingPoint.getText()) && !myDB.seeIfAlreadyExists(alloyName.getText().toString())){
-                    myDB.insertRow(alloyName.getText().toString(), Double.parseDouble(meltingPoint.getText().toString()));
+                    //myDB.insertRow(alloyName.getText().toString(), Double.parseDouble(meltingPoint.getText().toString()));
                     startActivity(mas);
                 }
                 else if(!TextUtils.isEmpty(alloyName.getText()) && !TextUtils.isEmpty(meltingPoint.getText()) && myDB.seeIfAlreadyExists(alloyName.getText().toString())){

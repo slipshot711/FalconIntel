@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-                android:text="Metal Alloy Selector"
+                android:text="@string/mas"
                 android:textAlignment="center"
 
                 android:textColor="@color/primary_material_light_1"

@@ -24,4 +24,8 @@
     <string name="add_metal">Add Metal Alloy</string>
     <string name="max">max:</string>
     <string name="min">min:</string>
+    <string name="mva">Minimum Vent Area</string>
+    <string name="lt">Locking Tonnage</string>
+    <string name="mas">Metal Alloy Selector</string>
+    <string name="logo">logo</string>
 </resources>

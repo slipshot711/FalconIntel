@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.TableRow;
 
 public class DBHandler{
 
@@ -13,13 +14,33 @@ public class DBHandler{
     public static final String ALLOY_ID = "_id";
     public static final String ALLOY_NAME = "name";
     public static final String MELTING_POINT = "melting_pt";
+    public static final String TENSILE_STRENGTH = "tensile_strength";
+    public static final String FATIGUE_STRENGTH = "fatigue_strength";
+    public static final String YIELD_STRENGTH = "yield_strength";
+    public static final String PERCENT_ELONGATION = "pt_elongation";
+    public static final String CORROSION_RESITANCE = "cor_resist";
+    public static final String HEAT_TREATMENT = "heat_treat";
+    public static final String THERMAL_CONDUCTIVITY = "thermal_con";
+    public static final String ELECTRIC_CONDUCTIVITY = "electric_con";
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "alloys";
     public static final String TABLE_ALLOY_DETAILS = "alloyDetails";
 
 
-    public static final String[] ALL_KEYS = new String[]{ALLOY_ID, ALLOY_NAME, MELTING_POINT};
+    public static final String[] ALL_KEYS = new String[]{
+            ALLOY_ID,
+            ALLOY_NAME,
+            MELTING_POINT,
+            TENSILE_STRENGTH,
+            FATIGUE_STRENGTH,
+            YIELD_STRENGTH,
+            PERCENT_ELONGATION,
+            CORROSION_RESITANCE,
+            HEAT_TREATMENT,
+            THERMAL_CONDUCTIVITY,
+            ELECTRIC_CONDUCTIVITY
+    };
 
     public static final int COL_ALLOY_ID = 0;
     public static final int COL_ALLOY_NAME = 1;
@@ -29,7 +50,15 @@ public class DBHandler{
             "CREATE TABLE " + TABLE_ALLOY_DETAILS + "("
             + ALLOY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + ALLOY_NAME + " TEXT NOT NULL, "
-            + MELTING_POINT + " DOUBLE NOT NULL" + ")";
+            + MELTING_POINT + " DOUBLE NOT NULL,"
+            + TENSILE_STRENGTH + " DOUBLE NOT NULL,"
+            + FATIGUE_STRENGTH + " DOUBLE NOT NULL,"
+            + YIELD_STRENGTH + " DOUBLE NOT NULL,"
+            + PERCENT_ELONGATION + " DOUBLE NOT NULL,"
+            + CORROSION_RESITANCE + " INTEGER NOT NULL,"
+            + HEAT_TREATMENT + " INTEGER NOT NULL,"
+            + THERMAL_CONDUCTIVITY + " INTEGER NOT NULL,"
+            + ELECTRIC_CONDUCTIVITY + " INTEGER NOT NULL" + ")";
 
     private final Context context;
     private DatabaseHelper myDBHelper;
@@ -50,10 +79,19 @@ public class DBHandler{
         myDBHelper.close();
     }
 
-    public long insertRow(String name, double melt_pt){
+    public long insertRow(String name, double melt_pt, double tStrength, double fStrength, double yStrength,
+                          double pElong, int corResist, int heatTreat, int tConduct, int eConduct){
         ContentValues initialValues = new ContentValues();
         initialValues.put(ALLOY_NAME, name);
         initialValues.put(MELTING_POINT, melt_pt);
+        initialValues.put(TENSILE_STRENGTH, tStrength);
+        initialValues.put(FATIGUE_STRENGTH, fStrength);
+        initialValues.put(YIELD_STRENGTH, yStrength);
+        initialValues.put(PERCENT_ELONGATION, pElong);
+        initialValues.put(CORROSION_RESITANCE, corResist);
+        initialValues.put(HEAT_TREATMENT, heatTreat);
+        initialValues.put(THERMAL_CONDUCTIVITY, tConduct);
+        initialValues.put(ELECTRIC_CONDUCTIVITY, eConduct);
 
         return db.insert(TABLE_ALLOY_DETAILS, null, initialValues);
     }
@@ -96,7 +134,6 @@ public class DBHandler{
 
     public Cursor filterData(String max, String min){
         String query = "SELECT * FROM " + TABLE_ALLOY_DETAILS + " WHERE " + MELTING_POINT + " BETWEEN " + min + " AND " + max;
-        //String query = "SELECT * FROM " + TABLE_ALLOY_DETAILS + " WHERE " + MELTING_POINT + " BETWEEN " + min + " AND " + max;
         Cursor c = db.rawQuery(query, null);
 
         if(c!= null){

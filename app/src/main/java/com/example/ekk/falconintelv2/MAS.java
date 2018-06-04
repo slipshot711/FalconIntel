@@ -23,6 +23,12 @@ public class MAS extends AppCompatActivity {
     final Bundle filters = new Bundle();
     double mpMax = Double.MAX_VALUE;
     double mpMin = 0;
+    double tStrength = Double.MAX_VALUE;
+    double fStrength = Double.MAX_VALUE;
+    double yStrength = Double.MAX_VALUE;
+    double percentEl = Double.MAX_VALUE;
+    int corResist = 0;
+    int heatTreat = 0;
 
 
 
@@ -38,22 +44,49 @@ public class MAS extends AppCompatActivity {
 
 
         try{
-            if(extrasBundle.containsKey("max_melting_pt")){
-                mpMax = extrasBundle.getDouble("max_melting_pt");
-                filters.putDouble("max_melting_pt", mpMax);
+//            if(extrasBundle.containsKey("max_melting_pt")){
+//                mpMax = extrasBundle.getDouble("max_melting_pt");
+//                filters.putDouble("max_melting_pt", mpMax);
+//            }
+//            if(extrasBundle.containsKey("min_melting_pt")){
+//                mpMin = extrasBundle.getDouble("min_melting_pt");
+//                filters.putDouble("min_melting_pt", mpMin);
+//            }
+            if(extrasBundle.containsKey("tensile_strength")){
+                tStrength = extrasBundle.getDouble("tensile_strength");
+                filters.putDouble("tensile_strength", tStrength);
             }
-            if(extrasBundle.containsKey("min_melting_pt")){
-                mpMin = extrasBundle.getDouble("min_melting_pt");
-                filters.putDouble("min_melting_pt", mpMin);
+            if(extrasBundle.containsKey("fatigue_strength")){
+                fStrength = extrasBundle.getDouble("fatigue_strength");
+                filters.putDouble("fatigue_strength", fStrength);
             }
-            else{
-                mpMax = Double.MAX_VALUE;
-                mpMin = 0;
+            if(extrasBundle.containsKey("yield_strength")){
+                yStrength = extrasBundle.getDouble("yield_strength");
+                filters.putDouble("yield_strength", yStrength);
             }
+            if(extrasBundle.containsKey("elongation")){
+                percentEl = extrasBundle.getDouble("elongation");
+                filters.putDouble("elongation", percentEl);
+            }
+            if(extrasBundle.containsKey("heat_treatment")){
+                heatTreat = extrasBundle.getInt("heat_treatment");
+                filters.putInt("heat_treatment", heatTreat);
+            }
+            if(extrasBundle.containsKey("corrosion_resistance")){
+                corResist = extrasBundle.getInt("corrosion_resistance");
+                filters.putInt("corrosion_resistance", corResist);
+            }
+
         }
         catch (NullPointerException e){
             mpMax = Double.MAX_VALUE;
             mpMin = 0;
+            tStrength = Double.MAX_VALUE;
+            fStrength = Double.MAX_VALUE;
+            yStrength = Double.MAX_VALUE;
+            percentEl = Double.MAX_VALUE;
+            corResist = 0;
+            heatTreat = 0;
         }
 
 
@@ -97,8 +130,8 @@ public class MAS extends AppCompatActivity {
 
     private void populateListView(double max, double min){
 
-        String[] fromFieldNames = new String[]{DBHandler.ALLOY_NAME, DBHandler.MELTING_POINT};
-        int[] toViewIDs = new int[]{R.id.textView48, R.id.textView49};
+        String[] fromFieldNames = new String[]{DBHandler.ALLOY_NAME};
+        int[] toViewIDs = new int[]{R.id.textView48};
 
         Cursor cursor = myDB.filterData(Double.toString(max), Double.toString(min));
         myCursorAdapter = new SimpleCursorAdapter(getBaseContext(), R.layout.item_layout, cursor, fromFieldNames,toViewIDs,0);

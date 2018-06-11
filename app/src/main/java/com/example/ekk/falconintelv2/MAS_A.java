@@ -28,34 +28,84 @@ public class MAS_A extends AppCompatActivity {
         openDB();
         final Intent mas = new Intent(getBaseContext(), MAS.class);
 
-        final EditText alloyName = findViewById(R.id.editText9);
-        final EditText meltingPoint = findViewById(R.id.editText10);
+        final EditText alloyName = findViewById(R.id.editText141);
+        final EditText tStrengthMin = findViewById(R.id.editText151);
+        final EditText tStrengthMax = findViewById(R.id.editText161);
+        final EditText fStrengthMin = findViewById(R.id.editText171);
+        final EditText fStrengthMax = findViewById(R.id.editText181);
+        final EditText yStrengthMin = findViewById(R.id.editText191);
+        final EditText yStrengthMax = findViewById(R.id.editText201);
+        final EditText percentElMin = findViewById(R.id.editText211);
+        final EditText percentElMax = findViewById(R.id.editText221);
+        final EditText tConduct = findViewById(R.id.editText231);
+        final EditText eConduct = findViewById(R.id.editText241);
+
 
         Button addAlloy = findViewById(R.id.button9);
-
-        alloyName.requestFocus();
 
         addAlloy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!TextUtils.isEmpty(alloyName.getText()) && !TextUtils.isEmpty(meltingPoint.getText()) && !myDB.seeIfAlreadyExists(alloyName.getText().toString())){
-                    //myDB.insertRow(alloyName.getText().toString(), Double.parseDouble(meltingPoint.getText().toString()));
+                if(!TextUtils.isEmpty(alloyName.getText()) &&
+                        !TextUtils.isEmpty(tStrengthMin.getText()) &&
+                        !TextUtils.isEmpty(tStrengthMax.getText()) &&
+                        !TextUtils.isEmpty(fStrengthMin.getText()) &&
+                        !TextUtils.isEmpty(fStrengthMax.getText()) &&
+                        !TextUtils.isEmpty(yStrengthMin.getText()) &&
+                        !TextUtils.isEmpty(yStrengthMax.getText()) &&
+                        !TextUtils.isEmpty(percentElMax.getText()) &&
+                        !TextUtils.isEmpty(percentElMin.getText()) &&
+                        !TextUtils.isEmpty(tConduct.getText()) &&
+                        !TextUtils.isEmpty(eConduct.getText()) &&
+                        !myDB.seeIfAlreadyExists(alloyName.getText().toString())){
+
+                    myDB.insertRow(
+                            alloyName.getText().toString(),
+                            Double.parseDouble(tStrengthMax.getText().toString()),
+                            Double.parseDouble(fStrengthMax.getText().toString()),
+                            Double.parseDouble(yStrengthMax.getText().toString()),
+                            Double.parseDouble(percentElMax.getText().toString()),
+                            Double.parseDouble(tStrengthMin.getText().toString()),
+                            Double.parseDouble(fStrengthMin.getText().toString()),
+                            Double.parseDouble(yStrengthMin.getText().toString()),
+                            Double.parseDouble(percentElMin.getText().toString()),
+                            0,
+                            Double.parseDouble(tConduct.getText().toString()),
+                            Double.parseDouble(eConduct.getText().toString())
+
+                    );
+
                     startActivity(mas);
                 }
-                else if(!TextUtils.isEmpty(alloyName.getText()) && !TextUtils.isEmpty(meltingPoint.getText()) && myDB.seeIfAlreadyExists(alloyName.getText().toString())){
+                else if(!TextUtils.isEmpty(alloyName.getText()) &&
+                        !TextUtils.isEmpty(tStrengthMin.getText()) &&
+                        !TextUtils.isEmpty(tStrengthMax.getText()) &&
+                        !TextUtils.isEmpty(fStrengthMin.getText()) &&
+                        !TextUtils.isEmpty(fStrengthMax.getText()) &&
+                        !TextUtils.isEmpty(yStrengthMin.getText()) &&
+                        !TextUtils.isEmpty(yStrengthMax.getText()) &&
+                        !TextUtils.isEmpty(percentElMax.getText()) &&
+                        !TextUtils.isEmpty(percentElMin.getText()) &&
+                        !TextUtils.isEmpty(tConduct.getText()) &&
+                        !TextUtils.isEmpty(eConduct.getText()) &&
+                        myDB.seeIfAlreadyExists(alloyName.getText().toString())){
+
                     Toast toast = Toast.makeText (getApplicationContext(), "Alloy already exists in database", Toast.LENGTH_SHORT);
                     toast.show();
                 }
-                else if(TextUtils.isEmpty(alloyName.getText()) && !TextUtils.isEmpty(meltingPoint.getText())){
-                    Toast toast = Toast.makeText (getApplicationContext(), "Please enter alloy name", Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-                else if(!TextUtils.isEmpty(alloyName.getText()) && TextUtils.isEmpty(meltingPoint.getText())){
-                    Toast toast = Toast.makeText (getApplicationContext(), "Please enter melting point", Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-                else if(TextUtils.isEmpty(alloyName.getText()) && TextUtils.isEmpty(meltingPoint.getText())){
-                    Toast toast = Toast.makeText (getApplicationContext(), "Please enter values", Toast.LENGTH_SHORT);
+                else if(TextUtils.isEmpty(alloyName.getText()) ||
+                        TextUtils.isEmpty(tStrengthMin.getText()) ||
+                        TextUtils.isEmpty(tStrengthMax.getText()) ||
+                        TextUtils.isEmpty(fStrengthMin.getText()) ||
+                        TextUtils.isEmpty(fStrengthMax.getText()) ||
+                        TextUtils.isEmpty(yStrengthMin.getText()) ||
+                        TextUtils.isEmpty(yStrengthMax.getText()) ||
+                        TextUtils.isEmpty(percentElMax.getText()) ||
+                        TextUtils.isEmpty(percentElMin.getText()) ||
+                        TextUtils.isEmpty(tConduct.getText()) ||
+                        TextUtils.isEmpty(eConduct.getText())){
+
+                    Toast toast = Toast.makeText (getApplicationContext(), "Missing Data", Toast.LENGTH_SHORT);
                     toast.show();
                 }
             }

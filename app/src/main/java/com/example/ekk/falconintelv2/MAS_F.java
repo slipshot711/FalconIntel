@@ -34,28 +34,29 @@ public class MAS_F extends AppCompatActivity {
         setContentView(R.layout.activity_mas__f);
 
         Intent intent = getIntent();
-        Bundle extrasBundle = intent.getExtras();
-        final Intent mas = new Intent(getBaseContext(), MAS.class);
-        mas.putExtra("key","value");
+        Bundle extrasBundle = intent.getExtras();final Intent mas = new Intent(getBaseContext(), MAS.class);
         final Bundle filters = new Bundle();
+
+        mas.putExtra("key","value");
+
 
         openDB();
 
 
 //        final EditText mpMaxInput = findViewById(R.id.editText11);
 //        final EditText mpMinInput = findViewById(R.id.editText12);
+
         final SeekBar tStrength = findViewById(R.id.seekBar8);
         final SeekBar fStrength = findViewById(R.id.seekBar6);
         final SeekBar yStrength = findViewById(R.id.seekBar7);
         final SeekBar percentEl = findViewById(R.id.seekBar9);
+        final int[] cor = {0};
         final TextView tDisplay = findViewById(R.id.textView95);
         final TextView fDisplay = findViewById(R.id.textView89);
         final TextView yDisplay = findViewById(R.id.textView92);
         final TextView elDisplay = findViewById(R.id.textView99);
         final Spinner corResist = findViewById(R.id.spinner3);
-        final CheckBox isHeatTreat = findViewById(R.id.checkBox);
-        final int[] heatTreat = {0};
-        final int[] cor = {0};
+
         Button save = findViewById(R.id.button11);
         Button clear = findViewById(R.id.button10);
 
@@ -179,18 +180,6 @@ public class MAS_F extends AppCompatActivity {
             }
         });
 
-        isHeatTreat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isHeatTreat.isChecked()){
-                    heatTreat[0] = 1;
-
-                }else{
-                    heatTreat[0] = 0;
-
-                }
-            }
-        });
 
         try{
 //            if(extrasBundle.containsKey("max_melting_pt")){
@@ -210,14 +199,6 @@ public class MAS_F extends AppCompatActivity {
             }
             if(extrasBundle.containsKey("elongation")){
                 percentEl.setProgress((int) extrasBundle.getDouble("elongation"));
-            }
-            if(extrasBundle.containsKey("heat_treatment")){
-                if(extrasBundle.getInt("heat_treatment")!=0){
-                    isHeatTreat.setChecked(true);
-                }else{
-                    isHeatTreat.setChecked(false);
-                }
-
             }
             if(extrasBundle.containsKey("corrosion_resistance")){
                 int i = extrasBundle.getInt("corrosion_resistance");
@@ -250,62 +231,11 @@ public class MAS_F extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if(!TextUtils.isEmpty(mpMaxInput.getText()) && !TextUtils.isEmpty(mpMinInput.getText())){
-//                    if(Double.parseDouble(mpMaxInput.getText().toString()) < Double.parseDouble(mpMinInput.getText().toString())){
-//                        filters.putDouble("max_melting_pt", Double.parseDouble(mpMinInput.getText().toString()));
-//                        filters.putDouble("min_melting_pt", Double.parseDouble(mpMaxInput.getText().toString()));
-//
-//                    }
-//                    else {
-//                        filters.putDouble("max_melting_pt", Double.parseDouble(mpMaxInput.getText().toString()));
-//                        filters.putDouble("min_melting_pt", Double.parseDouble(mpMinInput.getText().toString()));
-//                    }
-//
-//                }
-//
-//                else if(TextUtils.isEmpty(mpMaxInput.getText()) && !TextUtils.isEmpty(mpMinInput.getText())){
-//                    filters.putDouble("max_melting_pt", Double.MAX_VALUE);
-//                    filters.putDouble("min_melting_pt", Double.parseDouble(mpMinInput.getText().toString()));
-//
-//                }
-//                else if(!TextUtils.isEmpty(mpMaxInput.getText()) && TextUtils.isEmpty(mpMinInput.getText())){
-//                    filters.putDouble("max_melting_pt", Double.parseDouble(mpMaxInput.getText().toString()));
-//                    filters.putDouble("min_melting_pt", 0);
-//
-//                }
-//                else if(TextUtils.isEmpty(mpMaxInput.getText()) && TextUtils.isEmpty(mpMinInput.getText())){
-//                    filters.putDouble("max_melting_pt", Double.MAX_VALUE);
-//                    filters.putDouble("min_melting_pt", 0);
-//                }
 
-                if(tStrength.getProgress()!= 0) {
-                    filters.putDouble("tensile_strength", tStrength.getProgress());
-                } else{
-                    filters.putDouble("tensile_strength", Double.MAX_VALUE);
-                }
-
-                if(fStrength.getProgress()!= 0) {
-                    filters.putDouble("fatigue_strength", fStrength.getProgress());
-                } else{
-                    filters.putDouble("fatigue_strength", Double.MAX_VALUE);
-
-                }
-
-                if(yStrength.getProgress()!= 0) {
-                    filters.putDouble("yield_strength", yStrength.getProgress());
-                } else{
-                    filters.putDouble("yield_strength", Double.MAX_VALUE);
-
-                }
-
-                if(percentEl.getProgress()!= 0) {
-                    filters.putDouble("elongation", yStrength.getProgress());
-                } else{
-                    filters.putDouble("elongation", 100);
-
-                }
-
-                filters.putInt("heat_treatment", heatTreat[0]);
+                filters.putDouble("tensile_strength", tStrength.getProgress());
+                filters.putDouble("fatigue_strength", fStrength.getProgress());
+                filters.putDouble("yield_strength", yStrength.getProgress());
+                filters.putDouble("elongation", percentEl.getProgress());
                 filters.putInt("corrosion_resistance", cor[0]);
 
 
@@ -322,7 +252,6 @@ public class MAS_F extends AppCompatActivity {
                 fStrength.setProgress(0);
                 yStrength.setProgress(0);
                 percentEl.setProgress(0);
-                isHeatTreat.setChecked(false);
                 corResist.setSelection(adapter.getPosition("No Selection"));
             }
         });
@@ -337,9 +266,24 @@ public class MAS_F extends AppCompatActivity {
 
     }
 
-    protected void OnBackPressed(View view){
-        super.onBackPressed();
-    }
+//    public void OnBackPressed(){
+//        MAS_F.super.onBackPressed();
+//
+//        filters.putDouble("tensile_strength", tStrength.getProgress());
+//        filters.putDouble("fatigue_strength", fStrength.getProgress());
+//        filters.putDouble("yield_strength", yStrength.getProgress());
+//        filters.putDouble("elongation", yStrength.getProgress());
+//        filters.putInt("heat_treatment", heatTreat[0]);
+//        filters.putInt("corrosion_resistance", cor[0]);
+//
+//
+//        mas.putExtra("key","value");
+//        mas.putExtras(filters);
+//        startActivityForResult(mas, 1);
+//        finish();
+//
+//
+//    }
 
     private void openDB(){
         myDB = new DBHandler(this);

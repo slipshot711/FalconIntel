@@ -40,6 +40,17 @@ public class MAS_A extends AppCompatActivity {
         final EditText tConduct = findViewById(R.id.editText231);
         final EditText eConduct = findViewById(R.id.editText241);
 
+        final double[] tSMx = new double[1];
+        final double[] tSMn = new double[1];
+        final double[] fSMx = new double[1];
+        final double[] fSMn = new double[1];
+        final double[] ySMx = new double[1];
+        final double[] ySMn = new double[1];
+        final double[] pEMx = new double[1];
+        final double[] pEMn = new double[1];
+        final double[] tC = new double[1];
+        final double[] eC = new double[1];
+
 
         Button addAlloy = findViewById(R.id.button9);
 
@@ -77,18 +88,7 @@ public class MAS_A extends AppCompatActivity {
 
                     startActivity(mas);
                 }
-                else if(!TextUtils.isEmpty(alloyName.getText()) &&
-                        !TextUtils.isEmpty(tStrengthMin.getText()) &&
-                        !TextUtils.isEmpty(tStrengthMax.getText()) &&
-                        !TextUtils.isEmpty(fStrengthMin.getText()) &&
-                        !TextUtils.isEmpty(fStrengthMax.getText()) &&
-                        !TextUtils.isEmpty(yStrengthMin.getText()) &&
-                        !TextUtils.isEmpty(yStrengthMax.getText()) &&
-                        !TextUtils.isEmpty(percentElMax.getText()) &&
-                        !TextUtils.isEmpty(percentElMin.getText()) &&
-                        !TextUtils.isEmpty(tConduct.getText()) &&
-                        !TextUtils.isEmpty(eConduct.getText()) &&
-                        myDB.seeIfAlreadyExists(alloyName.getText().toString())){
+                else if(myDB.seeIfAlreadyExists(alloyName.getText().toString())){
 
                     Toast toast = Toast.makeText (getApplicationContext(), "Alloy already exists in database", Toast.LENGTH_SHORT);
                     toast.show();
@@ -103,10 +103,49 @@ public class MAS_A extends AppCompatActivity {
                         TextUtils.isEmpty(percentElMax.getText()) ||
                         TextUtils.isEmpty(percentElMin.getText()) ||
                         TextUtils.isEmpty(tConduct.getText()) ||
-                        TextUtils.isEmpty(eConduct.getText())){
+                        TextUtils.isEmpty(eConduct.getText())) {
 
-                    Toast toast = Toast.makeText (getApplicationContext(), "Missing Data", Toast.LENGTH_SHORT);
-                    toast.show();
+                    if (TextUtils.isEmpty(alloyName.getText())) {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Name Missing", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                    else if (!TextUtils.isEmpty(alloyName.getText())) {
+
+                        if (TextUtils.isEmpty(tStrengthMin.getText())) {
+                            tSMn[0] = 0;
+                        }
+                        if (TextUtils.isEmpty(tStrengthMax.getText())) {
+                            tSMx[0] = 2147483647;
+                        }
+                        if (TextUtils.isEmpty(fStrengthMin.getText())) {
+                            fSMn[0] = 0;
+                        }
+                        if (TextUtils.isEmpty(fStrengthMax.getText())) {
+                            fSMx[0] = 2147483647;
+                        }
+                        if (TextUtils.isEmpty(yStrengthMin.getText())) {
+                            ySMn[0] = 0;
+                        }
+                        if (TextUtils.isEmpty(yStrengthMax.getText())) {
+                            ySMx[0] = 2147483647;
+                        }
+                        if (TextUtils.isEmpty(percentElMin.getText())) {
+                            pEMn[0] = 0;
+                        }
+                        if (TextUtils.isEmpty(percentElMax.getText())) {
+                            pEMx[0] = 2147483647;
+                        }
+                        if (TextUtils.isEmpty(tConduct.getText())) {
+                            tC[0] = 0;
+                        }
+                        if (TextUtils.isEmpty(eConduct.getText())) {
+                            eC[0] = 0;
+
+                        }
+
+                        myDB.insertRow(alloyName.getText().toString(), tSMx[0], fSMx[0], ySMx[0], pEMx[0], tSMn[0], fSMn[0], ySMn[0], pEMn[0], 0, tC[0], eC[0]);
+                        startActivity(mas);
+                    }
                 }
             }
         });

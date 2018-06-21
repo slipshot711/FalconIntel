@@ -92,12 +92,7 @@ public class MAS extends AppCompatActivity {
         openDB();
 
         //test.setText((Double.toString(percentEl)));
-        if(tStrength==0 && fStrength==0 && yStrength==0 && percentEl==0){
-            populateListView();
-        }
-        else {
-            populateListView(tStrength, fStrength, yStrength, percentEl);
-        }
+        populateListView(tStrength, fStrength, yStrength, percentEl);
         listViewItemLongClick();
 
 
@@ -178,12 +173,8 @@ public class MAS extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 myDB.deleteRow(id);
-                                if(tStrength==0 && fStrength==0 && yStrength==0 && percentEl==0){
                                     populateListView();
-                                }
-                                else {
-                                    populateListView(tStrength, fStrength, yStrength, percentEl);
-                                }
+//                                  populateListView(tStrength, fStrength, yStrength, percentEl);
                             }
                         });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

@@ -133,6 +133,60 @@ public class DBHandler{
     }
 
 
+    public int takeCheck(int[] ar){
+        int count = 0;
+        for(int i =0; i< ar.length; i++){
+            if(ar[i]>10){
+                count++;
+            }
+        }
+        return count++;
+
+    }
+    public int[] returnCheck(int k){
+        int[] output = new int[10];
+        for(int i =0; i<output.length; i++){
+            if(i > k){
+                output[i] = i;
+            }
+        }
+        return output;
+    }
+
+    public boolean checkIfRunning(boolean isRunning){
+        if(isRunning){
+            for(int i =0; i < 12; i ++){
+             if(isRunning){
+                 return false;
+             }else{
+                 return true;
+             }
+            }
+        }
+        else{
+            for(int j = 0; j<10; j++){
+                if(!isRunning){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
+    public String moveForward(){
+       String s  = "move";
+       String t  = " quickly";
+       String q = " forward";
+       String u = " uhhhh";
+       String v = " now";
+       String r = " please!";
+       String p = s+q+r+u+v+t;
+       return p;
+    }
+
     public Cursor getAllRows(){
         String loc = null;
         String query = "SELECT  * FROM " + TABLE_ALLOY_DETAILS;
@@ -154,11 +208,88 @@ public class DBHandler{
 
     public Cursor filterData(String t, String f,
                              String y, String p){
-        String query = "SELECT * FROM " + TABLE_ALLOY_DETAILS +
-                " WHERE " + MAX_TENSILE_STRENGTH + " > " + t + " AND " + MIN_TENSILE_STRENGTH + " < " + t +
-                " AND " + MAX_FATIGUE_STRENGTH + " > " + f + " AND " + MIN_FATIGUE_STRENGTH + " < " + f +
-                " AND " + MAX_YIELD_STRENGTH + " > " + y  + " AND " + MIN_YIELD_STRENGTH + " < " + y +
-                " AND " + MAX_PERCENT_ELONGATION + " > " + p  + " AND " + MIN_PERCENT_ELONGATION + " < " + p;
+        String query;
+        if(Double.parseDouble(t)==0 && Double.parseDouble(f)==0 && Double.parseDouble(y)==0 && Double.parseDouble(p)==0){
+            query = "SELECT  * FROM " + TABLE_ALLOY_DETAILS;
+        }
+        else if(Double.parseDouble(t)==0 && Double.parseDouble(f)!=0 && Double.parseDouble(y)!=0 && Double.parseDouble(p)!=0){
+            query = "SELECT * FROM " + TABLE_ALLOY_DETAILS +
+                    " WHERE "+ MAX_FATIGUE_STRENGTH + " > " + f +
+                    " AND " + MAX_YIELD_STRENGTH + " > " + y  +
+                    " AND " + MAX_PERCENT_ELONGATION + " > " + p;
+        }
+        else if(Double.parseDouble(t)!=0 && Double.parseDouble(f)==0 && Double.parseDouble(y)!=0 && Double.parseDouble(p)!=0){
+            query = "SELECT * FROM " + TABLE_ALLOY_DETAILS +
+                    " WHERE " + MAX_TENSILE_STRENGTH + " > " + t +
+                    " AND " + MAX_YIELD_STRENGTH + " > " + y  +
+                    " AND " + MAX_PERCENT_ELONGATION + " > " + p;
+        }
+        else if(Double.parseDouble(t)!=0 && Double.parseDouble(f)!=0 && Double.parseDouble(y)==0 && Double.parseDouble(p)!=0){
+            query = "SELECT * FROM " + TABLE_ALLOY_DETAILS +
+                    " WHERE " + MAX_TENSILE_STRENGTH + " > " + t +
+                    " AND " + MAX_FATIGUE_STRENGTH + " > " + f +
+                    " AND " + MAX_PERCENT_ELONGATION + " > " + p;
+        }
+        else if(Double.parseDouble(t)!=0 && Double.parseDouble(f)!=0 && Double.parseDouble(y)!=0 && Double.parseDouble(p)==0){
+            query = "SELECT * FROM " + TABLE_ALLOY_DETAILS +
+                    " WHERE " + MAX_TENSILE_STRENGTH + " > " + t +
+                    " AND " + MAX_FATIGUE_STRENGTH + " > " + f +
+                    " AND " + MAX_YIELD_STRENGTH + " > " + y;
+        }
+        else if(Double.parseDouble(t)==0 && Double.parseDouble(f)==0 && Double.parseDouble(y)!=0 && Double.parseDouble(p)!=0){
+            query = "SELECT * FROM " + TABLE_ALLOY_DETAILS +
+                    " WHERE " + MAX_YIELD_STRENGTH + " > " + y  +
+                    " AND " + MAX_PERCENT_ELONGATION + " > " + p;
+        }
+        else if(Double.parseDouble(t)==0 && Double.parseDouble(f)!=0 && Double.parseDouble(y)==0 && Double.parseDouble(p)!=0){
+            query = "SELECT * FROM " + TABLE_ALLOY_DETAILS +
+                    " WHERE " + MAX_FATIGUE_STRENGTH + " > " + f +
+                    " AND " + MAX_PERCENT_ELONGATION + " > " + p;
+        }
+        else if(Double.parseDouble(t)==0 && Double.parseDouble(f)!=0 && Double.parseDouble(y)!=0 && Double.parseDouble(p)==0){
+            query = "SELECT * FROM " + TABLE_ALLOY_DETAILS +
+                    " WHERE " + MAX_FATIGUE_STRENGTH + " > " + f +
+                    " AND " + MAX_YIELD_STRENGTH + " > " + y;
+        }
+        else if(Double.parseDouble(t)!=0 && Double.parseDouble(f)==0 && Double.parseDouble(y)==0 && Double.parseDouble(p)!=0){
+            query = "SELECT * FROM " + TABLE_ALLOY_DETAILS +
+                    " WHERE " + MAX_TENSILE_STRENGTH + " > " + t +
+                    " AND " + MAX_PERCENT_ELONGATION + " > " + p;
+        }
+        else if(Double.parseDouble(t)!=0 && Double.parseDouble(f)==0 && Double.parseDouble(y)!=0 && Double.parseDouble(p)==0){
+            query = "SELECT * FROM " + TABLE_ALLOY_DETAILS +
+                    " WHERE " + MAX_TENSILE_STRENGTH + " > " + t +
+                    " AND " + MAX_YIELD_STRENGTH + " > " + y;
+        }
+        else if(Double.parseDouble(t)!=0 && Double.parseDouble(f)!=0 && Double.parseDouble(y)==0 && Double.parseDouble(p)==0){
+            query = "SELECT * FROM " + TABLE_ALLOY_DETAILS +
+                    " WHERE " + MAX_TENSILE_STRENGTH + " > " + t +
+                    " AND " + MAX_FATIGUE_STRENGTH + " > " + f;
+        }
+        else if(Double.parseDouble(t)!=0 && Double.parseDouble(f)==0 && Double.parseDouble(y)==0 && Double.parseDouble(p)==0){
+            query = "SELECT * FROM " + TABLE_ALLOY_DETAILS +
+                    " WHERE " + MAX_TENSILE_STRENGTH + " > " + t;
+        }
+        else if(Double.parseDouble(t)==0 && Double.parseDouble(f)!=0 && Double.parseDouble(y)==0 && Double.parseDouble(p)==0){
+            query = "SELECT * FROM " + TABLE_ALLOY_DETAILS +
+                    " WHERE " + MAX_FATIGUE_STRENGTH + " > " + f;
+        }
+        else if(Double.parseDouble(t)==0 && Double.parseDouble(f)==0 && Double.parseDouble(y)!=0 && Double.parseDouble(p)==0){
+            query = "SELECT * FROM " + TABLE_ALLOY_DETAILS +
+                    " WHERE " + MAX_YIELD_STRENGTH + " > " + y;
+        }
+        else if(Double.parseDouble(t)==0 && Double.parseDouble(f)==0 && Double.parseDouble(y)==0 && Double.parseDouble(p)!=0){
+            query = "SELECT * FROM " + TABLE_ALLOY_DETAILS +
+                    " WHERE " + MAX_PERCENT_ELONGATION + " > " + p;
+        }
+        else{
+            query = "SELECT * FROM " + TABLE_ALLOY_DETAILS +
+                    " WHERE " + MAX_TENSILE_STRENGTH + " > " +
+                    " AND " + MAX_FATIGUE_STRENGTH + " > " + f +
+                    " AND " + MAX_YIELD_STRENGTH + " > " + y  +
+                    " AND " + MAX_PERCENT_ELONGATION + " > " + p;
+        }
+
         Cursor c = db.rawQuery(query, null);
 
         if(c!= null){

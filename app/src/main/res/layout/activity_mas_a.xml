@@ -253,7 +253,9 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/button_spacing" />
+                android:layout_height="@dimen/button_spacing"
+                android:layout_marginRight = "10dp"/>
+                android:layout_marginLeft = "10dp"/>
 
             <TextView
                 android:id="@+id/textView53"
@@ -272,7 +274,7 @@
 
                 <TextView
                     android:id="@+id/textView541"
-                    android:layout_width="118dp"
+                    android:layout_width="102dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Min:"
@@ -280,7 +282,7 @@
 
                 <EditText
                     android:id="@+id/editText211"
-                    android:layout_width="89dp"
+                    android:layout_width="62dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
@@ -298,7 +300,7 @@
 
                 <TextView
                     android:id="@+id/textView551"
-                    android:layout_width="85dp"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:text="Max:"
@@ -306,7 +308,7 @@
 
                 <EditText
                     android:id="@+id/editText221"
-                    android:layout_width="89dp"
+                    android:layout_width="62dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"

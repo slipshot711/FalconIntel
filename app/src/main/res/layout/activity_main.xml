@@ -44,7 +44,7 @@
             android:backgroundTint="@color/colorPrimary"
             android:onClick="openMAFT"
             android:text="@string/title_maft"
-            android:textColor="@color/background_material_light_1" />
+            android:textColor="@color/textWhite" />
 
         <Space
             android:layout_width="match_parent"
@@ -57,7 +57,7 @@
             android:backgroundTint="@color/colorPrimary"
             android:onClick="openMVA"
             android:text="@string/mva"
-            android:textColor="@color/background_material_light_1" />
+            android:textColor="@color/textWhite" />
 
         <Space
             android:layout_width="match_parent"
@@ -70,7 +70,7 @@
             android:backgroundTint="@color/colorPrimary"
             android:onClick="openSSV"
             android:text="@string/slow_shot_velocity"
-            android:textColor="@color/background_material_light_1" />
+            android:textColor="@color/textWhite" />
 
         <Space
             android:layout_width="match_parent"
@@ -83,7 +83,7 @@
             android:backgroundTint="@color/colorPrimary"
             android:onClick="openLT"
             android:text="@string/lt"
-            android:textColor="@color/background_material_light_1" />
+            android:textColor="@color/textWhite" />
 
         <Space
             android:layout_width="match_parent"
@@ -96,7 +96,7 @@
             android:backgroundTint="@color/colorPrimary"
             android:onClick="openMAS"
             android:text="@string/mas"
-            android:textColor="@color/background_material_light_1" />
+            android:textColor="@color/textWhite" />
 
     </LinearLayout>
 

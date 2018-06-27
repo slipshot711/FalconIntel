@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -38,7 +39,6 @@ public class MAS_F extends AppCompatActivity {
         final Bundle filters = new Bundle();
 
         mas.putExtra("key","value");
-
 
         openDB();
 
@@ -259,12 +259,52 @@ public class MAS_F extends AppCompatActivity {
     }
 
 
+    public void onBackPressed(){
+
+        Intent mas = new Intent(getBaseContext(), MAS.class);
+        final Bundle filters = new Bundle();
+
+        final SeekBar tStrength = findViewById(R.id.seekBar8);
+        final SeekBar fStrength = findViewById(R.id.seekBar6);
+        final SeekBar yStrength = findViewById(R.id.seekBar7);
+        final SeekBar percentEl = findViewById(R.id.seekBar9);
+        final int[] cor = {0};
+        final TextView tDisplay = findViewById(R.id.textView95);
+        final TextView fDisplay = findViewById(R.id.textView89);
+        final TextView yDisplay = findViewById(R.id.textView92);
+        final TextView elDisplay = findViewById(R.id.textView99);
+        final Spinner corResist = findViewById(R.id.spinner3);
+        filters.putDouble("tensile_strength", tStrength.getProgress());
+        filters.putDouble("fatigue_strength", fStrength.getProgress());
+        filters.putDouble("yield_strength", yStrength.getProgress());
+        filters.putDouble("elongation", percentEl.getProgress());
+        filters.putInt("corrosion_resistance", cor[0]);
+
+
+        mas.putExtra("key","value");
+        mas.putExtras(filters);
+        startActivityForResult(mas, 1);
+        return;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return(super.onOptionsItemSelected(item));
+    }
+
     @Override
     protected void onDestroy(){
         super.onDestroy();
         closeDB();
 
     }
+
 
 //    public void OnBackPressed(){
 //        MAS_F.super.onBackPressed();

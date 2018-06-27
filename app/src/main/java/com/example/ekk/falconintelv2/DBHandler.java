@@ -12,20 +12,20 @@ public class DBHandler{
 
     public static final String ALLOY_ID = "_id";
     public static final String ALLOY_NAME = "name";
-    public static final String MIN_TENSILE_STRENGTH = "max_tensile_strength";
-    public static final String MIN_FATIGUE_STRENGTH = "max_fatigue_strength";
-    public static final String MIN_YIELD_STRENGTH = "max_yield_strength";
-    public static final String MIN_PERCENT_ELONGATION = "max_pt_elongation";
-    public static final String MAX_TENSILE_STRENGTH = "min_tensile_strength";
-    public static final String MAX_FATIGUE_STRENGTH = "min_fatigue_strength";
-    public static final String MAX_YIELD_STRENGTH = "min_yield_strength";
-    public static final String MAX_PERCENT_ELONGATION = "min_pt_elongation";
+    public static final String MIN_TENSILE_STRENGTH = "min_tensile_strength";
+    public static final String MIN_FATIGUE_STRENGTH = "min_fatigue_strength";
+    public static final String MIN_YIELD_STRENGTH = "min_yield_strength";
+    public static final String MIN_PERCENT_ELONGATION = "min_pt_elongation";
+    public static final String MAX_TENSILE_STRENGTH = "max_tensile_strength";
+    public static final String MAX_FATIGUE_STRENGTH = "max_fatigue_strength";
+    public static final String MAX_YIELD_STRENGTH = "max_yield_strength";
+    public static final String MAX_PERCENT_ELONGATION = "max_pt_elongation";
     public static final String CORROSION_RESISTANCE = "cor_resist";
     public static final String THERMAL_CONDUCTIVITY = "thermal_con";
     public static final String ELECTRIC_CONDUCTIVITY = "electric_con";
 
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "alloys";
+    private static final String DATABASE_NAME = "AlloyV1";
     public static final String TABLE_ALLOY_DETAILS = "alloyDetails";
 
 
@@ -77,16 +77,16 @@ public class DBHandler{
             + ELECTRIC_CONDUCTIVITY + " DOUBLE " + ")";
 
     private final Context context;
-    private DatabaseHelper myDBHelper;
+    private DBHelper myDBHelper;
     private SQLiteDatabase db;
 
     public DBHandler(Context ctx){
         this.context = ctx;
-        myDBHelper = new DatabaseHelper(context);
+        myDBHelper = new DBHelper(context);
     }
 
     public DBHandler open(){
-        db = myDBHelper.getWritableDatabase();
+        db = myDBHelper.openDatabase();
         return this;
     }
 
@@ -132,60 +132,6 @@ public class DBHandler{
         c.close();
     }
 
-
-    public int takeCheck(int[] ar){
-        int count = 0;
-        for(int i =0; i< ar.length; i++){
-            if(ar[i]>10){
-                count++;
-            }
-        }
-        return count++;
-
-    }
-    public int[] returnCheck(int k){
-        int[] output = new int[10];
-        for(int i =0; i<output.length; i++){
-            if(i > k){
-                output[i] = i;
-            }
-        }
-        return output;
-    }
-
-    public boolean checkIfRunning(boolean isRunning){
-        if(isRunning){
-            for(int i =0; i < 12; i ++){
-             if(isRunning){
-                 return false;
-             }else{
-                 return true;
-             }
-            }
-        }
-        else{
-            for(int j = 0; j<10; j++){
-                if(!isRunning){
-                    return true;
-                }
-                else{
-                    return false;
-                }
-            }
-        }
-        return false;
-    }
-
-    public String moveForward(){
-       String s  = "move";
-       String t  = " quickly";
-       String q = " forward";
-       String u = " uhhhh";
-       String v = " now";
-       String r = " please!";
-       String p = s+q+r+u+v+t;
-       return p;
-    }
 
     public Cursor getAllRows(){
         String loc = null;
@@ -284,7 +230,7 @@ public class DBHandler{
         }
         else{
             query = "SELECT * FROM " + TABLE_ALLOY_DETAILS +
-                    " WHERE " + MAX_TENSILE_STRENGTH + " > " +
+                    " WHERE " + MAX_TENSILE_STRENGTH + " > " + t +
                     " AND " + MAX_FATIGUE_STRENGTH + " > " + f +
                     " AND " + MAX_YIELD_STRENGTH + " > " + y  +
                     " AND " + MAX_PERCENT_ELONGATION + " > " + p;
@@ -305,6 +251,96 @@ public class DBHandler{
             c.moveToFirst();
         }
         return c.getString(COL_ALLOY_NAME);
+    }
+
+    public String getMaxTensileStrength(long rowID){
+        String loc = ALLOY_ID + "=" + rowID;
+        Cursor c = db.query(true, TABLE_ALLOY_DETAILS, ALL_KEYS, loc, null,null,null, null, null);
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c.getString(COL_MAX_TENSILE_STRENGTH);
+    }
+
+    public String getMaxFatigueStrength(long rowID){
+        String loc = ALLOY_ID + "=" + rowID;
+        Cursor c = db.query(true, TABLE_ALLOY_DETAILS, ALL_KEYS, loc, null,null,null, null, null);
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c.getString(COL_MAX_FATIGUE_STRENGTH);
+    }
+
+    public String getMaxYieldStrength(long rowID){
+        String loc = ALLOY_ID + "=" + rowID;
+        Cursor c = db.query(true, TABLE_ALLOY_DETAILS, ALL_KEYS, loc, null,null,null, null, null);
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c.getString(COL_MAX_YIELD_STRENGTH);
+    }
+
+    public String getMaxPercentElongation(long rowID){
+        String loc = ALLOY_ID + "=" + rowID;
+        Cursor c = db.query(true, TABLE_ALLOY_DETAILS, ALL_KEYS, loc, null,null,null, null, null);
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c.getString(COL_MAX_PERCENT_ELONGATION);
+    }
+
+    public String getMinTensileStrength(long rowID){
+        String loc = ALLOY_ID + "=" + rowID;
+        Cursor c = db.query(true, TABLE_ALLOY_DETAILS, ALL_KEYS, loc, null,null,null, null, null);
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c.getString(COL_MIN_TENSILE_STRENGTH);
+    }
+
+    public String getMinFatigueStrength(long rowID){
+        String loc = ALLOY_ID + "=" + rowID;
+        Cursor c = db.query(true, TABLE_ALLOY_DETAILS, ALL_KEYS, loc, null,null,null, null, null);
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c.getString(COL_MIN_FATIGUE_STRENGTH);
+    }
+
+    public String getMinYieldStrength(long rowID){
+        String loc = ALLOY_ID + "=" + rowID;
+        Cursor c = db.query(true, TABLE_ALLOY_DETAILS, ALL_KEYS, loc, null,null,null, null, null);
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c.getString(COL_MIN_YIELD_STRENGTH);
+    }
+
+    public String getMinPercentElongation(long rowID){
+        String loc = ALLOY_ID + "=" + rowID;
+        Cursor c = db.query(true, TABLE_ALLOY_DETAILS, ALL_KEYS, loc, null,null,null, null, null);
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c.getString(COL_MIN_PERCENT_ELONGATION);
+    }
+
+    public String getThermalConductivity(long rowID){
+        String loc = ALLOY_ID + "=" + rowID;
+        Cursor c = db.query(true, TABLE_ALLOY_DETAILS, ALL_KEYS, loc, null,null,null, null, null);
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c.getString(COL_THERMAL_CONDUCTIVITY);
+    }
+
+    public String getElectricConductivity(long rowID){
+        String loc = ALLOY_ID + "=" + rowID;
+        Cursor c = db.query(true, TABLE_ALLOY_DETAILS, ALL_KEYS, loc, null,null,null, null, null);
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c.getString(COL_ELECTRIC_CONDUCTIVITY);
     }
 
 

@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10px"
-            android:max="380"
+            android:max="510"
 
             android:progress="0"
             android:theme="@style/SeekBarTheme"
@@ -138,7 +138,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10px"
-            android:max="300"
+            android:max="460"
 
             android:progress="0"
             android:theme="@style/SeekBarTheme"
@@ -292,7 +292,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10px"
-            android:max="110"
+            android:max="130"
 
             android:progress="0"
             android:theme="@style/SeekBarTheme"

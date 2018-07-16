@@ -3,22 +3,32 @@ package com.example.ekk.falconintelv2;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Vibrator;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FilterQueryProvider;
 import android.widget.ImageButton;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
 public class MAS extends AppCompatActivity {
@@ -35,6 +45,8 @@ public class MAS extends AppCompatActivity {
     double percentEl = Double.MAX_VALUE;
     int corResist = 0;
     int heatTreat = 0;
+
+    final ArrayList<Integer> selected = new ArrayList<Integer>();
 
 
 
@@ -151,6 +163,7 @@ public class MAS extends AppCompatActivity {
 
     private void populateListView(){
 
+
         Cursor cursor = myDB.getAllRows();
         String[] fromFieldNames = new String[]{DBHandler.ALLOY_NAME};
         int[] toViewIDs = new int[]{R.id.textView111};
@@ -159,11 +172,13 @@ public class MAS extends AppCompatActivity {
 
         ListView list = findViewById(R.id.listView);
         list.setAdapter(myCursorAdapter);
+
     }
 
     private void listViewItemClick(){
         final ListView myList = findViewById(R.id.listView);
         myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, final long id) {
                 LayoutInflater inflater = getLayoutInflater();
@@ -269,6 +284,7 @@ public class MAS extends AppCompatActivity {
         });
     }
 
+
     private void listViewItemLongClick() {
         final ListView myList = findViewById(R.id.listView);
         myList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -278,6 +294,7 @@ public class MAS extends AppCompatActivity {
 
                 Vibrator vb = (Vibrator) getSystemService(MAS.this.VIBRATOR_SERVICE);
                 vb.vibrate(50);
+
 
                 View alertLayout = inflater.inflate(R.layout.alert_layout, null);
                 final TextView Title = alertLayout.findViewById(R.id.textView112);
@@ -291,7 +308,6 @@ public class MAS extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 myDB.deleteRow(id);
                                     populateListView();
-//                                  populateListView(tStrength, fStrength, yStrength, percentEl);
                             }
                         });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -307,10 +323,7 @@ public class MAS extends AppCompatActivity {
             }
         });
 
-
     }
-
-
 
 
 

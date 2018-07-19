@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
+        //sugar :) honey :) ice :) tea ;)
 
     }
 

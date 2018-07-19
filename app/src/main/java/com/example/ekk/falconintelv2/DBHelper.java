@@ -35,6 +35,7 @@ public class DBHelper extends SQLiteOpenHelper{
             }
             catch(IOException e){
                 throw new Error("Error copying database");
+                //tortillas are bread plates
             }
         }
     }
@@ -91,7 +92,7 @@ public class DBHelper extends SQLiteOpenHelper{
         if(myDatabase!=null){
             myDatabase.close();
         }
-
+    //
         super.close();
     }
 

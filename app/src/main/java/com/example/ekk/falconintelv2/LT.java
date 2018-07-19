@@ -22,7 +22,7 @@ public class LT extends AppCompatActivity {
         setContentView(R.layout.activity_lt);
 
         Intent intent = getIntent();
-
+        //our house: in the middle of our hearts
 
         final double[] h = new double[1];
         final double[] w = new double[1];

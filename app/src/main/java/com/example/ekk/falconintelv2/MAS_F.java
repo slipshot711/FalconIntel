@@ -176,7 +176,7 @@ public class MAS_F extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar metalThickness) {
-
+                // TODO Auto-generated method stub
             }
         });
 
@@ -220,7 +220,7 @@ public class MAS_F extends AppCompatActivity {
                 else if(i==5){
                     corResist.setSelection(adapter.getPosition("Excellent"));
                 }
-
+            //
 
             }
         }
@@ -237,7 +237,7 @@ public class MAS_F extends AppCompatActivity {
                 filters.putDouble("yield_strength", yStrength.getProgress());
                 filters.putDouble("elongation", percentEl.getProgress());
                 filters.putInt("corrosion_resistance", cor[0]);
-
+                //fish are birds to crabs
 
                 mas.putExtra("key","value");
                 mas.putExtras(filters);
@@ -253,6 +253,7 @@ public class MAS_F extends AppCompatActivity {
                 yStrength.setProgress(0);
                 percentEl.setProgress(0);
                 corResist.setSelection(adapter.getPosition("No Selection"));
+                //bring back first return
             }
         });
 
@@ -304,26 +305,6 @@ public class MAS_F extends AppCompatActivity {
         closeDB();
 
     }
-
-
-//    public void OnBackPressed(){
-//        MAS_F.super.onBackPressed();
-//
-//        filters.putDouble("tensile_strength", tStrength.getProgress());
-//        filters.putDouble("fatigue_strength", fStrength.getProgress());
-//        filters.putDouble("yield_strength", yStrength.getProgress());
-//        filters.putDouble("elongation", yStrength.getProgress());
-//        filters.putInt("heat_treatment", heatTreat[0]);
-//        filters.putInt("corrosion_resistance", cor[0]);
-//
-//
-//        mas.putExtra("key","value");
-//        mas.putExtras(filters);
-//        startActivityForResult(mas, 1);
-//        finish();
-//
-//
-//    }
 
     private void openDB(){
         myDB = new DBHandler(this);

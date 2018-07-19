@@ -156,9 +156,6 @@ public class MAS extends AppCompatActivity {
 
         ListView list = findViewById(R.id.listView);
         list.setAdapter(myCursorAdapter);
-
-
-
     }
 
     private void populateListView(){
@@ -232,6 +229,7 @@ public class MAS extends AppCompatActivity {
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
 
+                //mayonnaise is gods sandwich cream
                 close.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -265,7 +263,6 @@ public class MAS extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 myDB.deleteRow(id);
                                 populateListView();
-//                                  populateListView(tStrength, fStrength, yStrength, percentEl);
                             }
                         });
                         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -320,12 +317,18 @@ public class MAS extends AppCompatActivity {
                 AlertDialog dialog = builder.create();
                 dialog.show();
                 return true;
+                //uhhh yea i sure hope it does
             }
         });
 
     }
 
 
+    public void multiListView(){
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(MAS.this);
+        mBuilder.setTitle("Items available in a shop");
+
+    }
 
 
 }

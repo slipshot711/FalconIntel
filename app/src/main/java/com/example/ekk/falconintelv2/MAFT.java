@@ -91,6 +91,7 @@ public class MAFT extends MainActivity {
                     k[0] = 0;
                     tF[0] = 0;
                     z[0] = 0;
+                    //flaccid teeth
 
                 }
             }

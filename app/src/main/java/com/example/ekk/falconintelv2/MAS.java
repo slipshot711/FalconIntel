@@ -67,31 +67,37 @@ public class MAS extends AppCompatActivity {
             if(extrasBundle.containsKey("tensile_strength")){
                 tStrength = extrasBundle.getDouble("tensile_strength");
                 filters.putDouble("tensile_strength", tStrength);
+                details.putDouble("tensile_strength", tStrength);
             }
 
             if(extrasBundle.containsKey("fatigue_strength")){
                 fStrength = extrasBundle.getDouble("fatigue_strength");
                 filters.putDouble("fatigue_strength", fStrength);
+                details.putDouble("fatigue_strength", fStrength);
             }
 
             if(extrasBundle.containsKey("yield_strength")){
                 yStrength = extrasBundle.getDouble("yield_strength");
                 filters.putDouble("yield_strength", yStrength);
+                details.putDouble("yield_strength", yStrength);
             }
 
             if(extrasBundle.containsKey("elongation")){
                 percentEl = extrasBundle.getDouble("elongation");
                 filters.putDouble("elongation", percentEl);
+                details.putDouble("elongation", percentEl);
             }
 
             if(extrasBundle.containsKey("heat_treatment")){
                 heatTreat = extrasBundle.getInt("heat_treatment");
                 filters.putInt("heat_treatment", heatTreat);
+                details.putInt("heat_treatment", heatTreat);
             }
 
             if(extrasBundle.containsKey("corrosion_resistance")){
                 corResist = extrasBundle.getInt("corrosion_resistance");
                 filters.putInt("corrosion_resistance", corResist);
+                details.putInt("corrosion_resistance", corResist);
             }
 
         }
@@ -128,6 +134,13 @@ public class MAS extends AppCompatActivity {
     public void openMAS_A(View view){
         Intent masa = new Intent(getBaseContext(), MAS_A.class);
         startActivity(masa);
+    }
+
+    public void openMAS_DB(){
+        Intent masdb =  new Intent(getBaseContext(), MAS_DB.class);
+        masdb.putExtras(details);
+        masdb.putExtra("key","value");
+        startActivityForResult(masdb,1);
     }
 
 
@@ -173,110 +186,114 @@ public class MAS extends AppCompatActivity {
     }
 
     private void listViewItemClick(){
+
+
         final ListView myList = findViewById(R.id.listView);
         myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, final long id) {
-                LayoutInflater inflater = getLayoutInflater();
-
-                View fullScreen = inflater.inflate(R.layout.full_screen_layout, null);
-
-                final TextView title = fullScreen.findViewById(R.id.textView49);
-                final TextView tStrengthMax = fullScreen.findViewById(R.id.textView62);
-                final TextView tStrengthMin = fullScreen.findViewById(R.id.textView65);
-                final TextView fStrengthMax = fullScreen.findViewById(R.id.textView68);
-                final TextView fStrengthMin = fullScreen.findViewById(R.id.textView70);
-                final TextView yStrengthMax = fullScreen.findViewById(R.id.textView73);
-                final TextView yStrengthMin = fullScreen.findViewById(R.id.textView75);
-                final TextView percentElMax = fullScreen.findViewById(R.id.textView78);
-                final TextView percentElMin = fullScreen.findViewById(R.id.textView80);
-                final TextView tConduct = fullScreen.findViewById(R.id.textView82);
-                final TextView eConduct = fullScreen.findViewById(R.id.textView84);
-                final ImageButton close  = fullScreen.findViewById(R.id.imageButton);
-                final ImageButton edit = fullScreen.findViewById(R.id.imageButton2);
-                final Button delete  = fullScreen.findViewById(R.id.button14);
-
-                title.setText(myDB.getName(id));
-                tStrengthMax.setText(myDB.getMaxTensileStrength(id));
-                fStrengthMax.setText(myDB.getMaxFatigueStrength(id));
-                yStrengthMax.setText(myDB.getMaxYieldStrength(id));
-                percentElMax.setText(myDB.getMaxPercentElongation(id));
-                tStrengthMin.setText(myDB.getMinTensileStrength(id));
-                fStrengthMin.setText(myDB.getMinFatigueStrength(id));
-                yStrengthMin.setText(myDB.getMinYieldStrength(id));
-                percentElMin.setText(myDB.getMinPercentElongation(id));
-                tConduct.setText(myDB.getThermalConductivity(id));
-                eConduct.setText(myDB.getElectricConductivity(id));
-
                 details.putLong("id", id);
-                details.putString("name", myDB.getName(id));
-                details.putString("tMax", myDB.getMaxTensileStrength(id));
-                details.putString("fMax", myDB.getMaxFatigueStrength(id));
-                details.putString("yMax", myDB.getMaxYieldStrength(id));
-                details.putString("pMax", myDB.getMaxPercentElongation(id));
-                details.putString("tMin", myDB.getMinTensileStrength(id));
-                details.putString("fMin", myDB.getMinFatigueStrength(id));
-                details.putString("yMin", myDB.getMinYieldStrength(id));
-                details.putString("pMin", myDB.getMinPercentElongation(id));
-                details.putString("tCon", myDB.getThermalConductivity(id));
-                details.putString("eCon", myDB.getElectricConductivity(id));
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(MAS.this);
-                builder.setView(fullScreen);
-
-                final AlertDialog dialog = builder.create();
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
-
-                //mayonnaise is gods sandwich cream
-                close.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-                edit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent masa = new Intent(getBaseContext(), MAS_A.class);
-                        masa.putExtras(details);
-                        masa.putExtra("key","value");
-                        startActivity(masa);
-                    }
-                });
-
-                delete.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        LayoutInflater inflater = getLayoutInflater();
-                        View alertLayout = inflater.inflate(R.layout.alert_layout, null);
-                        final TextView Title = alertLayout.findViewById(R.id.textView112);
-                        Title.setText("Are you sure you want to delete " + myDB.getName(id) + "?");
-
-                        AlertDialog.Builder builder = new AlertDialog.Builder(MAS.this);
-                        builder.setCancelable(true);
-                        builder.setView(alertLayout);
-                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                myDB.deleteRow(id);
-                                populateListView();
-                            }
-                        });
-                        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-
-                        AlertDialog deleteDialog = builder.create();
-                        deleteDialog.show();
-                        dialog.dismiss();
-                    }
-                });
+                openMAS_DB();
+//                LayoutInflater inflater = getLayoutInflater();
+//
+//                View fullScreen = inflater.inflate(R.layout.full_screen_layout, null);
+//
+//                final TextView title = fullScreen.findViewById(R.id.textView49);
+//                final TextView tStrengthMax = fullScreen.findViewById(R.id.textView62);
+//                final TextView tStrengthMin = fullScreen.findViewById(R.id.textView65);
+//                final TextView fStrengthMax = fullScreen.findViewById(R.id.textView68);
+//                final TextView fStrengthMin = fullScreen.findViewById(R.id.textView70);
+//                final TextView yStrengthMax = fullScreen.findViewById(R.id.textView73);
+//                final TextView yStrengthMin = fullScreen.findViewById(R.id.textView75);
+//                final TextView percentElMax = fullScreen.findViewById(R.id.textView78);
+//                final TextView percentElMin = fullScreen.findViewById(R.id.textView80);
+//                final TextView tConduct = fullScreen.findViewById(R.id.textView82);
+//                final TextView eConduct = fullScreen.findViewById(R.id.textView84);
+//                final ImageButton close  = fullScreen.findViewById(R.id.imageButton);
+//                final ImageButton edit = fullScreen.findViewById(R.id.imageButton2);
+//                final Button delete  = fullScreen.findViewById(R.id.button14);
+//
+//                title.setText(myDB.getName(id));
+//                tStrengthMax.setText(myDB.getMaxTensileStrength(id));
+//                fStrengthMax.setText(myDB.getMaxFatigueStrength(id));
+//                yStrengthMax.setText(myDB.getMaxYieldStrength(id));
+//                percentElMax.setText(myDB.getMaxPercentElongation(id));
+//                tStrengthMin.setText(myDB.getMinTensileStrength(id));
+//                fStrengthMin.setText(myDB.getMinFatigueStrength(id));
+//                yStrengthMin.setText(myDB.getMinYieldStrength(id));
+//                percentElMin.setText(myDB.getMinPercentElongation(id));
+//                tConduct.setText(myDB.getThermalConductivity(id));
+//                eConduct.setText(myDB.getElectricConductivity(id));
+//
+//                details.putLong("id", id);
+//                details.putString("name", myDB.getName(id));
+//                details.putString("tMax", myDB.getMaxTensileStrength(id));
+//                details.putString("fMax", myDB.getMaxFatigueStrength(id));
+//                details.putString("yMax", myDB.getMaxYieldStrength(id));
+//                details.putString("pMax", myDB.getMaxPercentElongation(id));
+//                details.putString("tMin", myDB.getMinTensileStrength(id));
+//                details.putString("fMin", myDB.getMinFatigueStrength(id));
+//                details.putString("yMin", myDB.getMinYieldStrength(id));
+//                details.putString("pMin", myDB.getMinPercentElongation(id));
+//                details.putString("tCon", myDB.getThermalConductivity(id));
+//                details.putString("eCon", myDB.getElectricConductivity(id));
+//
+//                AlertDialog.Builder builder = new AlertDialog.Builder(MAS.this);
+//                builder.setView(fullScreen);
+//
+//                final AlertDialog dialog = builder.create();
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                dialog.show();
+//
+//                //mayonnaise is gods sandwich cream
+//                close.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//
+//                edit.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Intent masa = new Intent(getBaseContext(), MAS_A.class);
+//                        masa.putExtras(details);
+//                        masa.putExtra("key","value");
+//                        startActivity(masa);
+//                    }
+//                });
+//
+//                delete.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        LayoutInflater inflater = getLayoutInflater();
+//                        View alertLayout = inflater.inflate(R.layout.alert_layout, null);
+//                        final TextView Title = alertLayout.findViewById(R.id.textView112);
+//                        Title.setText("Are you sure you want to delete " + myDB.getName(id) + "?");
+//
+//                        AlertDialog.Builder builder = new AlertDialog.Builder(MAS.this);
+//                        builder.setCancelable(true);
+//                        builder.setView(alertLayout);
+//                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                myDB.deleteRow(id);
+//                                populateListView();
+//                            }
+//                        });
+//                        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                            }
+//                        });
+//
+//                        AlertDialog deleteDialog = builder.create();
+//                        deleteDialog.show();
+//                        dialog.dismiss();
+//                    }
+//                });
             }
         });
     }
@@ -324,10 +341,22 @@ public class MAS extends AppCompatActivity {
     }
 
 
-    public void multiListView(){
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(MAS.this);
-        mBuilder.setTitle("Items available in a shop");
+    public void onBackPressed(){
 
+        Intent mainActivity = new Intent(getBaseContext(), MainActivity.class);
+        startActivity(mainActivity);
+        return;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return(super.onOptionsItemSelected(item));
     }
 
 

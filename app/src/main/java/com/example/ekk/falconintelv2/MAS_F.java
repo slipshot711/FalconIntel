@@ -35,7 +35,8 @@ public class MAS_F extends AppCompatActivity {
         setContentView(R.layout.activity_mas__f);
 
         Intent intent = getIntent();
-        Bundle extrasBundle = intent.getExtras();final Intent mas = new Intent(getBaseContext(), MAS.class);
+        Bundle extrasBundle = intent.getExtras();
+        final Intent mas = new Intent(getBaseContext(), MAS.class);
         final Bundle filters = new Bundle();
 
         mas.putExtra("key","value");
@@ -270,11 +271,6 @@ public class MAS_F extends AppCompatActivity {
         final SeekBar yStrength = findViewById(R.id.seekBar7);
         final SeekBar percentEl = findViewById(R.id.seekBar9);
         final int[] cor = {0};
-        final TextView tDisplay = findViewById(R.id.textView95);
-        final TextView fDisplay = findViewById(R.id.textView89);
-        final TextView yDisplay = findViewById(R.id.textView92);
-        final TextView elDisplay = findViewById(R.id.textView99);
-        final Spinner corResist = findViewById(R.id.spinner3);
         filters.putDouble("tensile_strength", tStrength.getProgress());
         filters.putDouble("fatigue_strength", fStrength.getProgress());
         filters.putDouble("yield_strength", yStrength.getProgress());

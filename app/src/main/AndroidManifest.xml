@@ -41,15 +41,20 @@
             android:name=".MAS_F"
             android:parentActivityName=".MAS"
             android:screenOrientation="portrait" />
-        
         <activity
             android:name=".MAS_A"
             android:parentActivityName=".MAS"
             android:screenOrientation="portrait" />
-        <activity android:name=".MVA"
+        <activity
+            android:name=".MVA"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".MAS_DB"
+            android:parentActivityName=".MAS"
+            android:screenOrientation="portrait">
 
+        </activity>
     </application>
 
 </manifest>

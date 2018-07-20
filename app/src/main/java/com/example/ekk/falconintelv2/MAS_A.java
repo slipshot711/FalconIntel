@@ -40,6 +40,14 @@ public class MAS_A extends AppCompatActivity {
         final EditText percentElMax = findViewById(R.id.editText221);
         final EditText tConduct = findViewById(R.id.editText231);
         final EditText eConduct = findViewById(R.id.editText241);
+        final EditText silicon = findViewById(R.id.editText251);
+        final EditText iron = findViewById(R.id.editText261);
+        final EditText copper = findViewById(R.id.editText271);
+        final EditText manganese = findViewById(R.id.editText282);
+        final EditText magnesium = findViewById(R.id.editText2821);
+        final EditText zinc = findViewById(R.id.editText2822);
+        final EditText titanium = findViewById(R.id.editText2823);
+
 
         final double[] tSMx = new double[1];
         final double[] tSMn = new double[1];
@@ -51,6 +59,13 @@ public class MAS_A extends AppCompatActivity {
         final double[] pEMn = new double[1];
         final double[] tC = new double[1];
         final double[] eC = new double[1];
+        final double[] Si = new double[1];
+        final double[] Fe = new double[1];
+        final double[] Cu = new double[1];
+        final double[] Mn = new double[1];
+        final double[] Mg = new double[1];
+        final double[] Zn = new double[1];
+        final double[] Ti = new double[1];
 
 
         Button addAlloy = findViewById(R.id.button9);
@@ -90,6 +105,27 @@ public class MAS_A extends AppCompatActivity {
             if(extrasBundle.containsKey("eCon")){
                 eConduct.setText(extrasBundle.getString("eCon"));
             }
+            if(extrasBundle.containsKey("Si")){
+                eConduct.setText(extrasBundle.getString("Si"));
+            }
+            if(extrasBundle.containsKey("Fe")){
+                eConduct.setText(extrasBundle.getString("Fe"));
+            }
+            if(extrasBundle.containsKey("Cu")){
+                eConduct.setText(extrasBundle.getString("Cu"));
+            }
+            if(extrasBundle.containsKey("Mn")){
+                eConduct.setText(extrasBundle.getString("Mn"));
+            }
+            if(extrasBundle.containsKey("Mg")){
+                eConduct.setText(extrasBundle.getString("Mg"));
+            }
+            if(extrasBundle.containsKey("Zn")){
+                eConduct.setText(extrasBundle.getString("Zn"));
+            }
+            if(extrasBundle.containsKey("Ti")){
+                eConduct.setText(extrasBundle.getString("Ti"));
+            }
 
         }
         catch (NullPointerException e){
@@ -110,6 +146,13 @@ public class MAS_A extends AppCompatActivity {
                         !TextUtils.isEmpty(percentElMin.getText()) &&
                         !TextUtils.isEmpty(tConduct.getText()) &&
                         !TextUtils.isEmpty(eConduct.getText()) &&
+                        !TextUtils.isEmpty(silicon.getText()) &&
+                        !TextUtils.isEmpty(iron.getText()) &&
+                        !TextUtils.isEmpty(copper.getText()) &&
+                        !TextUtils.isEmpty(manganese.getText()) &&
+                        !TextUtils.isEmpty(magnesium.getText()) &&
+                        !TextUtils.isEmpty(zinc.getText()) &&
+                        !TextUtils.isEmpty(titanium.getText()) &&
                         !myDB.seeIfAlreadyExists(alloyName.getText().toString())){
 
                     myDB.insertRow(
@@ -124,7 +167,14 @@ public class MAS_A extends AppCompatActivity {
                             Double.parseDouble(percentElMin.getText().toString()),
                             0,
                             Double.parseDouble(tConduct.getText().toString()),
-                            Double.parseDouble(eConduct.getText().toString())
+                            Double.parseDouble(eConduct.getText().toString()),
+                            Double.parseDouble(silicon.getText().toString()),
+                            Double.parseDouble(iron.getText().toString()),
+                            Double.parseDouble(copper.getText().toString()),
+                            Double.parseDouble(manganese.getText().toString()),
+                            Double.parseDouble(magnesium.getText().toString()),
+                            Double.parseDouble(zinc.getText().toString()),
+                            Double.parseDouble(titanium.getText().toString())
 
                     );
 
@@ -145,7 +195,14 @@ public class MAS_A extends AppCompatActivity {
                                 Double.parseDouble(percentElMin.getText().toString()),
                                 0,
                                 Double.parseDouble(tConduct.getText().toString()),
-                                Double.parseDouble(eConduct.getText().toString()));
+                                Double.parseDouble(eConduct.getText().toString()),
+                                Double.parseDouble(silicon.getText().toString()),
+                                Double.parseDouble(iron.getText().toString()),
+                                Double.parseDouble(copper.getText().toString()),
+                                Double.parseDouble(manganese.getText().toString()),
+                                Double.parseDouble(magnesium.getText().toString()),
+                                Double.parseDouble(zinc.getText().toString()),
+                                Double.parseDouble(titanium.getText().toString()));
                         startActivity(mas);
                     }
                     catch (NullPointerException e){
@@ -165,7 +222,14 @@ public class MAS_A extends AppCompatActivity {
                         TextUtils.isEmpty(percentElMax.getText()) ||
                         TextUtils.isEmpty(percentElMin.getText()) ||
                         TextUtils.isEmpty(tConduct.getText()) ||
-                        TextUtils.isEmpty(eConduct.getText())) {
+                        TextUtils.isEmpty(eConduct.getText()) ||
+                        TextUtils.isEmpty(silicon.getText()) ||
+                        TextUtils.isEmpty(iron.getText()) ||
+                        TextUtils.isEmpty(copper.getText()) ||
+                        TextUtils.isEmpty(manganese.getText()) ||
+                        TextUtils.isEmpty(magnesium.getText()) ||
+                        TextUtils.isEmpty(zinc.getText()) ||
+                        TextUtils.isEmpty(titanium.getText())) {
 
                     if (TextUtils.isEmpty(alloyName.getText())) {
                         Toast toast = Toast.makeText(getApplicationContext(), "Name Missing", Toast.LENGTH_SHORT);
@@ -223,8 +287,45 @@ public class MAS_A extends AppCompatActivity {
                         }else{
                             eC[0] =  Double.parseDouble(eConduct.getText().toString());
                         }
+                        if (TextUtils.isEmpty(silicon.getText())) {
+                            Si[0] = 0;
+                        }else{
+                            Si[0] =  Double.parseDouble(silicon.getText().toString());
+                        }
+                        if (TextUtils.isEmpty(iron.getText())) {
+                            Fe[0] = 0;
+                        }else{
+                            Fe[0] =  Double.parseDouble(iron.getText().toString());
+                        }
+                        if (TextUtils.isEmpty(copper.getText())) {
+                            Cu[0] = 0;
+                        }else{
+                            Cu[0] =  Double.parseDouble(copper.getText().toString());
+                        }
+                        if (TextUtils.isEmpty(manganese.getText())) {
+                            Mn[0] = 0;
+                        }else{
+                            Mn[0] =  Double.parseDouble(manganese.getText().toString());
+                        }
+                        if (TextUtils.isEmpty(magnesium.getText())) {
+                            Mg[0] = 0;
+                        }else{
+                            Mg[0] =  Double.parseDouble(magnesium.getText().toString());
+                        }
+                        if (TextUtils.isEmpty(zinc.getText())) {
+                            Zn[0] = 0;
+                        }else{
+                            Zn[0] =  Double.parseDouble(zinc.getText().toString());
+                        }
+                        if (TextUtils.isEmpty(titanium.getText())) {
+                            Ti[0] = 0;
+                        }else{
+                            Ti[0] =  Double.parseDouble(titanium.getText().toString());
+                        }
 
-                        myDB.insertRow(alloyName.getText().toString(), tSMx[0], fSMx[0], ySMx[0], pEMx[0], tSMn[0], fSMn[0], ySMn[0], pEMn[0], 0, tC[0], eC[0]);
+                        myDB.insertRow(alloyName.getText().toString(), tSMx[0], fSMx[0], ySMx[0], pEMx[0], tSMn[0],
+                                fSMn[0], ySMn[0], pEMn[0], 0, tC[0], eC[0], Si[0], Fe[0], Cu[0], Mn[0], Mg[0],
+                                Zn[0], Ti[0]);
                         startActivity(mas);
                     }
                 }

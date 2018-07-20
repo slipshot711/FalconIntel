@@ -298,6 +298,35 @@ public class MAS extends AppCompatActivity {
         });
     }
 
+    public void delete(final long id){
+
+        LayoutInflater inflater = getLayoutInflater();
+        View alertLayout = inflater.inflate(R.layout.alert_layout, null);
+        final TextView Title = alertLayout.findViewById(R.id.textView1121);
+        Title.setText("Are you sure you want to delete " + myDB.getName(id) + "?");
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(MAS.this);
+        builder.setCancelable(true);
+        builder.setView(alertLayout);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                myDB.deleteRow(id);
+                populateListView();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+
+    }
 
     private void listViewItemLongClick() {
         final ListView myList = findViewById(R.id.listView);

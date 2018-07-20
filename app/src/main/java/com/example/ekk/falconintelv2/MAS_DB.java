@@ -1,12 +1,10 @@
 package com.example.ekk.falconintelv2;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,23 +12,22 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.SeekBar;
-import android.widget.Spinner;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MAS_DB extends AppCompatActivity {
 
     DBHandler myDB;
+    final Bundle filters = new Bundle();
+    final Bundle details  =new Bundle();
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
     private ViewPager mViewPager;
-    final Bundle filters = new Bundle();
+
 
 
     @Override
@@ -40,16 +37,81 @@ public class MAS_DB extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extrasBundle = intent.getExtras();
+        openDB();
 
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
-        // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+
+        TextView name = findViewById(R.id.textView4001);
+        ImageButton edit =  findViewById(R.id.imageButton3);
+        final ImageButton delete = findViewById(R.id.imageButton4);
+        final long id = getID();
+
+
+        details.putString("name", myDB.getName(id));
+                details.putString("tMax", myDB.getMaxTensileStrength(id));
+                details.putString("fMax", myDB.getMaxFatigueStrength(id));
+                details.putString("yMax", myDB.getMaxYieldStrength(id));
+                details.putString("pMax", myDB.getMaxPercentElongation(id));
+                details.putString("tMin", myDB.getMinTensileStrength(id));
+                details.putString("fMin", myDB.getMinFatigueStrength(id));
+                details.putString("yMin", myDB.getMinYieldStrength(id));
+                details.putString("pMin", myDB.getMinPercentElongation(id));
+                details.putString("tCon", myDB.getThermalConductivity(id));
+                details.putString("eCon", myDB.getElectricConductivity(id));
+                details.putString("Si", myDB.getElectricConductivity(id));
+                details.putString("Fe", myDB.getElectricConductivity(id));
+                details.putString("Cu", myDB.getElectricConductivity(id));
+                details.putString("Mn", myDB.getElectricConductivity(id));
+                details.putString("Mg", myDB.getElectricConductivity(id));
+                details.putString("Zn", myDB.getElectricConductivity(id));
+                details.putString("Ti", myDB.getElectricConductivity(id));
+
+
+        name.setText(myDB.getName(id));
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent masa = new Intent(getBaseContext(), MAS_A.class);
+                masa.putExtras(details);
+                masa.putExtra("key","value");
+                startActivity(masa);
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                LayoutInflater inflater = getLayoutInflater();
+                View alertLayout = inflater.inflate(R.layout.alert_layout, null);
+                final TextView Title = alertLayout.findViewById(R.id.textView1121);
+                Title.setText("Are you sure you want to delete " + myDB.getName(id) + "?");
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(MAS_DB.this);
+                builder.setCancelable(true);
+                builder.setView(alertLayout);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        myDB.deleteRow(id);
+                        onBackPressed();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+            }
+        });
 
 
 
@@ -64,43 +126,6 @@ public class MAS_DB extends AppCompatActivity {
 
 
     }
-
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public PlaceholderFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_mas__db, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
-    }
-
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -134,6 +159,7 @@ public class MAS_DB extends AppCompatActivity {
         Bundle extrasBundle = intent.getExtras();
         return extrasBundle.getLong("id");
     }
+
     @Override
     protected void onDestroy(){
         super.onDestroy();

@@ -21,6 +21,7 @@
     <string name="title_activity_ms">MS</string>
     <string name="tab_1">Physical Properties</string>
     <string name="tab_2">Chemical Composition</string>
+    <string name="percent"> %</string>
 
 
 

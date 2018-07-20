@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import org.w3c.dom.Text;
+
 public class DBHandler{
 
     private static final String TAG = "DBHandler";
@@ -23,6 +25,13 @@ public class DBHandler{
     public static final String CORROSION_RESISTANCE = "cor_resist";
     public static final String THERMAL_CONDUCTIVITY = "thermal_con";
     public static final String ELECTRIC_CONDUCTIVITY = "electric_con";
+    public static final String SILICON = "silicon";
+    public static final String IRON = "iron";
+    public static final String COPPER = "copper";
+    public static final String MANGANESE = "manganese";
+    public static final String MAGNESIUM = "magnesium";
+    public static final String ZINC = "zinc";
+    public static final String TITANIUM = "titanium";
 
     public static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "AlloyV1";
@@ -42,7 +51,14 @@ public class DBHandler{
             MAX_PERCENT_ELONGATION,
             CORROSION_RESISTANCE,
             THERMAL_CONDUCTIVITY,
-            ELECTRIC_CONDUCTIVITY
+            ELECTRIC_CONDUCTIVITY,
+            SILICON,
+            IRON,
+            COPPER,
+            MANGANESE,
+            MAGNESIUM,
+            ZINC,
+            TITANIUM
     };
 
     public static final int COL_ALLOY_ID = 0;
@@ -58,6 +74,13 @@ public class DBHandler{
     public static final int COL_CORROSION_RESISTANCE = 10;
     public static final int COL_THERMAL_CONDUCTIVITY = 11;
     public static final int COL_ELECTRIC_CONDUCTIVITY = 12;
+    public static final int COL_SILICON = 13;
+    public static final int COL_IRON = 14;
+    public static final int COL_COPPER = 15;
+    public static final int COL_MANGANESE = 16;
+    public static final int COL_MAGNESIUM = 17;
+    public static final int COL_ZINC = 18;
+    public static final int COL_TITANIUM = 19;
 
 
     private static final String CREATE_ALLOY_DETAIL_TABLE =
@@ -74,7 +97,15 @@ public class DBHandler{
             + MAX_PERCENT_ELONGATION + " DOUBLE,"
             + CORROSION_RESISTANCE + " TEXT,"
             + THERMAL_CONDUCTIVITY + " DOUBLE,"
-            + ELECTRIC_CONDUCTIVITY + " DOUBLE " + ")";
+            + ELECTRIC_CONDUCTIVITY + " DOUBLE, "
+            + SILICON + " DOUBLE, "
+            + IRON + " DOUBLE, "
+            + COPPER + " DOUBLE, "
+            + MANGANESE + " DOUBLE, "
+            + MAGNESIUM + " DOUBLE, "
+            + ZINC + " DOUBLE, "
+            + TITANIUM + " DOUBLE "
+                    + ")";
 
     private final Context context;
     private DBHelper myDBHelper;
@@ -97,7 +128,9 @@ public class DBHandler{
 
     public long insertRow(String name, double tStrengthMax, double fStrengthMax, double yStrengthMax,
                           double pElongMax,double tStrengthMin, double fStrengthMin, double yStrengthMin,
-                          double pElongMin, int corResist, double tConduct, double eConduct){
+                          double pElongMin, int corResist, double tConduct, double eConduct,
+                          double silicon, double iron, double copper, double manganese, double magnesium,
+                          double zinc, double titanium){
         ContentValues initialValues = new ContentValues();
         initialValues.put(ALLOY_NAME, name);
         initialValues.put(MIN_TENSILE_STRENGTH, tStrengthMin);
@@ -111,6 +144,13 @@ public class DBHandler{
         initialValues.put(CORROSION_RESISTANCE, corResist);
         initialValues.put(THERMAL_CONDUCTIVITY, tConduct);
         initialValues.put(ELECTRIC_CONDUCTIVITY, eConduct);
+        initialValues.put(SILICON, silicon);
+        initialValues.put(IRON, iron);
+        initialValues.put(COPPER, copper);
+        initialValues.put(MANGANESE, manganese);
+        initialValues.put(MAGNESIUM, magnesium);
+        initialValues.put(ZINC, zinc);
+        initialValues.put(TITANIUM, titanium);
 
         return db.insert(TABLE_ALLOY_DETAILS, null, initialValues);
     }
@@ -343,6 +383,71 @@ public class DBHandler{
         return c.getString(COL_ELECTRIC_CONDUCTIVITY);
     }
 
+    public String getSilicon(long rowID){
+        String loc = ALLOY_ID + "=" + rowID;
+        Cursor c = db.query(true, TABLE_ALLOY_DETAILS, ALL_KEYS, loc, null,null,null, null, null);
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c.getString(COL_SILICON);
+    }
+
+    public String getIron(long rowID){
+        String loc = ALLOY_ID + "=" + rowID;
+        Cursor c = db.query(true, TABLE_ALLOY_DETAILS, ALL_KEYS, loc, null,null,null, null, null);
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c.getString(COL_IRON);
+    }
+
+    public String getCopper(long rowID){
+        String loc = ALLOY_ID + "=" + rowID;
+        Cursor c = db.query(true, TABLE_ALLOY_DETAILS, ALL_KEYS, loc, null,null,null, null, null);
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c.getString(COL_COPPER);
+    }
+
+    public String getManganese(long rowID){
+        String loc = ALLOY_ID + "=" + rowID;
+        Cursor c = db.query(true, TABLE_ALLOY_DETAILS, ALL_KEYS, loc, null,null,null, null, null);
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c.getString(COL_MANGANESE);
+    }
+
+    public String getMagnesium(long rowID){
+        String loc = ALLOY_ID + "=" + rowID;
+        Cursor c = db.query(true, TABLE_ALLOY_DETAILS, ALL_KEYS, loc, null,null,null, null, null);
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c.getString(COL_MAGNESIUM);
+    }
+
+    public String getZinc(long rowID){
+        String loc = ALLOY_ID + "=" + rowID;
+        Cursor c = db.query(true, TABLE_ALLOY_DETAILS, ALL_KEYS, loc, null,null,null, null, null);
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c.getString(COL_ZINC);
+    }
+
+    public String getTitanium(long rowID){
+        String loc = ALLOY_ID + "=" + rowID;
+        Cursor c = db.query(true, TABLE_ALLOY_DETAILS, ALL_KEYS, loc, null,null,null, null, null);
+        if(c != null){
+            c.moveToFirst();
+        }
+        return c.getString(COL_TITANIUM);
+    }
+
+
+
 
     public int getSize(){
         return (int) db.getPageSize();
@@ -365,7 +470,9 @@ public class DBHandler{
 
     public boolean updateRow(long rowID, String name, double tStrengthMax, double fStrengthMax, double yStrengthMax,
                              double pElongMax,double tStrengthMin, double fStrengthMin, double yStrengthMin,
-                             double pElongMin, int corResist, double tConduct, double eConduct){
+                             double pElongMin, int corResist, double tConduct, double eConduct,
+                             double silicon, double iron, double copper, double manganese, double magnesium,
+                             double zinc, double titanium){
         String loc = ALLOY_ID + "=" + rowID;
         ContentValues newValues = new ContentValues();
         newValues.put(ALLOY_NAME, name);
@@ -380,6 +487,14 @@ public class DBHandler{
         newValues.put(CORROSION_RESISTANCE, corResist);
         newValues.put(THERMAL_CONDUCTIVITY, tConduct);
         newValues.put(ELECTRIC_CONDUCTIVITY, eConduct);
+        newValues.put(SILICON, silicon);
+        newValues.put(IRON, iron);
+        newValues.put(COPPER, copper);
+        newValues.put(MANGANESE, manganese);
+        newValues.put(MAGNESIUM, magnesium);
+        newValues.put(ZINC, zinc);
+        newValues.put(TITANIUM, titanium);
+
         return db.update(TABLE_ALLOY_DETAILS, newValues, loc, null) != 0;
     }
 

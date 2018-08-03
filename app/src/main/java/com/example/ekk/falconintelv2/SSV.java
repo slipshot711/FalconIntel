@@ -3,6 +3,7 @@ package com.example.ekk.falconintelv2;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,11 +32,14 @@ public class SSV extends AppCompatActivity {
         final double[] density = new double[1];
         final TextView analysis = findViewById(R.id.textView23);
         final TextView ld = findViewById(R.id.textView19);
+        final TextView unit = findViewById(R.id.textView69);
         final EditText plungerDiameter = findViewById(R.id.editText2);
         final EditText sleeveLength = findViewById(R.id.editText5);
         final EditText ladled = findViewById(R.id.editText8);
         final String volume = "Volume Ladled";
         final String pounds = "Pounds Ladled";
+        final String v = "cm3";
+        final String p = "lb";
         final Switch flip = findViewById(R.id.switch1);
         final Spinner alloy = findViewById(R.id.spinner);
 
@@ -44,9 +48,11 @@ public class SSV extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     ld.setText(pounds);
+                    unit.setText(p);
                 }
                 else{
                     ld.setText(volume);
+                    unit.setText(v);
                 }
             }
         });
@@ -59,9 +65,6 @@ public class SSV extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = (String) parent.getItemAtPosition(position);
-
-                Toast toast = Toast.makeText (getApplicationContext(), "Selected : " + selectedItem, Toast.LENGTH_SHORT);
-                toast.show();
 
 
                 if(selectedItem=="Magnesium"){
@@ -152,5 +155,16 @@ public class SSV extends AppCompatActivity {
         super.onBackPressed();
 
         overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return(super.onOptionsItemSelected(item));
     }
 }

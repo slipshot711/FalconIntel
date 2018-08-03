@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
+        //overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
         //sugar :) honey :) ice :) tea ;)
 
     }
@@ -45,5 +45,11 @@ public class MainActivity extends AppCompatActivity {
         Intent mva = new Intent(getBaseContext(), MVA.class);
         startActivity(mva);
     }
+
+    public void onBackPressed(){
+
+        moveTaskToBack(true);
+    }
+
 
 }

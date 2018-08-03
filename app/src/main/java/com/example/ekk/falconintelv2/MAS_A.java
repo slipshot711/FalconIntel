@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -23,6 +24,8 @@ public class MAS_A extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mas_a);
+
+
 
         Intent intent = getIntent();
         final Bundle extrasBundle = intent.getExtras();
@@ -106,29 +109,30 @@ public class MAS_A extends AppCompatActivity {
                 eConduct.setText(extrasBundle.getString("eCon"));
             }
             if(extrasBundle.containsKey("Si")){
-                eConduct.setText(extrasBundle.getString("Si"));
+                silicon.setText(extrasBundle.getString("Si"));
             }
             if(extrasBundle.containsKey("Fe")){
-                eConduct.setText(extrasBundle.getString("Fe"));
+                iron.setText(extrasBundle.getString("Fe"));
             }
             if(extrasBundle.containsKey("Cu")){
-                eConduct.setText(extrasBundle.getString("Cu"));
+                copper.setText(extrasBundle.getString("Cu"));
             }
             if(extrasBundle.containsKey("Mn")){
-                eConduct.setText(extrasBundle.getString("Mn"));
+                manganese.setText(extrasBundle.getString("Mn"));
             }
             if(extrasBundle.containsKey("Mg")){
-                eConduct.setText(extrasBundle.getString("Mg"));
+                magnesium.setText(extrasBundle.getString("Mg"));
             }
             if(extrasBundle.containsKey("Zn")){
-                eConduct.setText(extrasBundle.getString("Zn"));
+                zinc.setText(extrasBundle.getString("Zn"));
             }
             if(extrasBundle.containsKey("Ti")){
-                eConduct.setText(extrasBundle.getString("Ti"));
+                titanium.setText(extrasBundle.getString("Ti"));
             }
 
         }
         catch (NullPointerException e){
+
         }
 
         addAlloy.setOnClickListener(new View.OnClickListener() {
@@ -351,5 +355,22 @@ public class MAS_A extends AppCompatActivity {
 
     private void closeDB(){
         myDB.close();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return(super.onOptionsItemSelected(item));
     }
 }

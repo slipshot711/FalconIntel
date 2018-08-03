@@ -1,197 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MVA">
-
-    <TextView
-        android:id="@+id/textView53"
-        android:layout_width="wrap_content"
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:text="@string/mva"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:typeface="sans"
-        app:fontFamily="sans-serif"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout12"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/background_material_light_1"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView53">
+        tools:context=".MVA">
 
         <TextView
-            android:id="@+id/textView54"
-            android:layout_width="159dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20px"
-            android:layout_marginLeft="20px"
-            android:layout_weight="1"
-            android:text="Fill Time (s)"
-            android:textSize="24sp"
-            android:typeface="sans" />
-
-        <EditText
-            android:id="@+id/editText13"
-            android:layout_width="39dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="0.0"
-            android:imeOptions="actionDone"
-            android:inputType="numberDecimal"
-            android:selectAllOnFocus="true"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:typeface="sans" />
-
-        <TextView
-            android:id="@+id/textView55"
+            android:id="@+id/textView53"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20px"
-            android:text="s"
-            android:textSize="18sp"
-            android:typeface="sans" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout13"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/background_material_light_1"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout12">
-
-        <TextView
-            android:id="@+id/textView57"
-            android:layout_width="229dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20px"
-            android:layout_marginLeft="20px"
-            android:layout_weight="1"
-            android:text="Volume (in3)"
-            android:textSize="24sp"
-            android:typeface="sans" />
-
-        <EditText
-            android:id="@+id/editText14"
-            android:layout_width="39dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="0.0"
-            android:imeOptions="actionDone"
-            android:inputType="numberDecimal"
-            android:selectAllOnFocus="true"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:typeface="sans" />
-
-        <TextView
-            android:id="@+id/textView58"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20px"
-            android:text="  "
-            android:textSize="18sp"
-            android:typeface="sans" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/background_material_light_1"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
+            android:layout_marginTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:text="@string/mva"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:typeface="sans"
+            app:fontFamily="sans-serif"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:id="@+id/linearLayout12"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/background_material_light_1"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView53">
 
             <TextView
-                android:id="@+id/textView59"
-                android:layout_width="wrap_content"
+                android:id="@+id/textView54"
+                android:layout_width="1dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20px"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:text="Analysis"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:typeface="sans" />
-
-            <Button
-                android:id="@+id/button13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif"
-                android:text="@string/calc_button"
-                android:textColor="@color/colorPrimary"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:typeface="sans" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="20px"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView60"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="0"
-                android:textAlignment="textEnd"
-                android:textIsSelectable="true"
+                android:text="@string/fill_time"
                 android:textSize="24sp"
                 android:typeface="sans" />
 
-            <TextView
-                android:id="@+id/textView61"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/editText13"
+                android:layout_width="1dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text=" in2" />
-        </LinearLayout>
-    </LinearLayout>
+                android:ems="10"
+                android:hint="@string/_0_0"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"
+                android:selectAllOnFocus="true"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:typeface="sans" />
 
-</android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/textView55"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/s"
+                android:textSize="18sp"
+                android:typeface="sans" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout13"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/background_material_light_1"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout12">
+
+            <TextView
+                android:id="@+id/textView57"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="@string/volume_in3"
+                android:textSize="24sp"
+                android:typeface="sans" />
+
+            <EditText
+                android:id="@+id/editText14"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/_0_0"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"
+                android:selectAllOnFocus="true"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:typeface="sans" />
+
+            <TextView
+                android:id="@+id/textView58"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:text="@string/in3"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/background_material_light_1"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView59"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/analysis"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:typeface="sans" />
+
+                <Button
+                    android:id="@+id/button13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/calc_button"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:typeface="sans" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView60"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/_0"
+                    android:textAlignment="textEnd"
+                    android:textIsSelectable="true"
+                    android:textSize="24sp"
+                    android:typeface="sans" />
+
+                <TextView
+                    android:id="@+id/textView61"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_weight="1"
+                    android:text="@string/in2" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
 </ScrollView>

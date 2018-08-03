@@ -49,25 +49,25 @@ public class MAS_DB extends AppCompatActivity {
         final ImageButton delete = findViewById(R.id.imageButton4);
         final long id = getID();
 
-
+        details.putLong("id", id);
         details.putString("name", myDB.getName(id));
-                details.putString("tMax", myDB.getMaxTensileStrength(id));
-                details.putString("fMax", myDB.getMaxFatigueStrength(id));
-                details.putString("yMax", myDB.getMaxYieldStrength(id));
-                details.putString("pMax", myDB.getMaxPercentElongation(id));
-                details.putString("tMin", myDB.getMinTensileStrength(id));
-                details.putString("fMin", myDB.getMinFatigueStrength(id));
-                details.putString("yMin", myDB.getMinYieldStrength(id));
-                details.putString("pMin", myDB.getMinPercentElongation(id));
-                details.putString("tCon", myDB.getThermalConductivity(id));
-                details.putString("eCon", myDB.getElectricConductivity(id));
-                details.putString("Si", myDB.getElectricConductivity(id));
-                details.putString("Fe", myDB.getElectricConductivity(id));
-                details.putString("Cu", myDB.getElectricConductivity(id));
-                details.putString("Mn", myDB.getElectricConductivity(id));
-                details.putString("Mg", myDB.getElectricConductivity(id));
-                details.putString("Zn", myDB.getElectricConductivity(id));
-                details.putString("Ti", myDB.getElectricConductivity(id));
+        details.putString("tMax", myDB.getMaxTensileStrength(id));
+        details.putString("fMax", myDB.getMaxFatigueStrength(id));
+        details.putString("yMax", myDB.getMaxYieldStrength(id));
+        details.putString("pMax", myDB.getMaxPercentElongation(id));
+        details.putString("tMin", myDB.getMinTensileStrength(id));
+        details.putString("fMin", myDB.getMinFatigueStrength(id));
+        details.putString("yMin", myDB.getMinYieldStrength(id));
+        details.putString("pMin", myDB.getMinPercentElongation(id));
+        details.putString("tCon", myDB.getThermalConductivity(id));
+        details.putString("eCon", myDB.getElectricConductivity(id));
+        details.putString("Si", myDB.getSilicon(id));
+        details.putString("Fe", myDB.getIron(id));
+        details.putString("Cu", myDB.getCopper(id));
+        details.putString("Mn", myDB.getManganese(id));
+        details.putString("Mg", myDB.getMagnesium(id));
+        details.putString("Zn", myDB.getZinc(id));
+        details.putString("Ti", myDB.getTitanium(id));
 
 
         name.setText(myDB.getName(id));
@@ -176,15 +176,15 @@ public class MAS_DB extends AppCompatActivity {
         myDB.close();
     }
 
+    @Override
     public void onBackPressed(){
 
+        super.onBackPressed();
         Intent mas = new Intent(getBaseContext(), MAS.class);
-
-
-
         mas.putExtra("key","value");
         mas.putExtras(filters);
-        startActivity(mas);
+        finish();
+        overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
         return;
     }
 

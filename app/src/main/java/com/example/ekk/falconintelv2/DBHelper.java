@@ -92,8 +92,8 @@ public class DBHelper extends SQLiteOpenHelper{
         if(myDatabase!=null){
             myDatabase.close();
         }
-    //
         super.close();
+
     }
 
     @Override

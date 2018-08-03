@@ -3,6 +3,7 @@ package com.example.ekk.falconintelv2;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -18,7 +19,6 @@ public class MVA extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mva);
-        overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
 
         Intent intent = getIntent();
         Bundle extrasBundle = intent.getExtras();
@@ -84,5 +84,22 @@ public class MVA extends AppCompatActivity {
                 analysis.setText(df.format(mv));
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return(super.onOptionsItemSelected(item));
     }
 }

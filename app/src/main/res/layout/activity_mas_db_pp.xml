@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     android:background="@color/colorAccent">
 
     <LinearLayout
         android:id="@+id/linearLayout15"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="16dp"
+        android:paddingBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +26,7 @@
             android:id="@+id/textView42"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tensile Strength (N/mm2)"
+            android:text="@string/tensile_strength_mpa"
             android:textAllCaps="false"
             android:textColor="@color/foreground_material_light_1"
             android:textSize="24sp" />
@@ -41,10 +40,10 @@
                 android:id="@+id/textView4001"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_weight="0"
-                android:text="0.00"
-                android:textColor="@color/colorPrimary"
+                android:text="@string/_0_00"
+                android:textColor="#99d7ec"
                 android:textSize="18sp" />
 
             <TextView
@@ -52,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text=" - "
+                android:text="@string/dash"
                 android:textAlignment="viewStart"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
@@ -62,8 +61,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="0.00"
-                android:textColor="@color/colorPrimary"
+                android:text="@string/_0_00"
+                android:textColor="#99d7ec"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -76,7 +75,7 @@
             android:id="@+id/textView46"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fatigue Strength (N/mm2)"
+            android:text="@string/fatigue_strength_mpa"
             android:textAllCaps="false"
             android:textColor="@color/foreground_material_light_1"
             android:textSize="24sp" />
@@ -90,10 +89,10 @@
                 android:id="@+id/textView47"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_weight="0"
-                android:text="0.00"
-                android:textColor="@color/colorPrimary"
+                android:text="@string/_0_00"
+                android:textColor="#99d7ec"
                 android:textSize="18sp" />
 
             <TextView
@@ -101,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text=" - "
+                android:text="@string/dash"
                 android:textAlignment="viewStart"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
@@ -111,8 +110,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="0.00"
-                android:textColor="@color/colorPrimary"
+                android:text="@string/_0_00"
+                android:textColor="#99d7ec"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -125,7 +124,7 @@
             android:id="@+id/textView511"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Yield Strength (N/mm2)"
+            android:text="@string/yield_strength_mpa"
             android:textAllCaps="false"
             android:textColor="@color/foreground_material_light_1"
             android:textSize="24sp" />
@@ -139,10 +138,10 @@
                 android:id="@+id/textView521"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_weight="0"
-                android:text="0.00"
-                android:textColor="@color/colorPrimary"
+                android:text="@string/_0_00"
+                android:textColor="#99d7ec"
                 android:textSize="18sp" />
 
             <TextView
@@ -150,7 +149,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text=" - "
+                android:text="@string/dash"
                 android:textAlignment="viewStart"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
@@ -160,8 +159,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="0.00"
-                android:textColor="@color/colorPrimary"
+                android:text="@string/_0_00"
+                android:textColor="#99d7ec"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -174,7 +173,7 @@
             android:id="@+id/textView551"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Percent Elongation"
+            android:text="@string/percent_elongation"
             android:textAllCaps="false"
             android:textColor="@color/foreground_material_light_1"
             android:textSize="24sp" />
@@ -188,10 +187,10 @@
                 android:id="@+id/textView561"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_weight="0"
-                android:text="0.00"
-                android:textColor="@color/colorPrimary"
+                android:text="@string/_0_00"
+                android:textColor="#99d7ec"
                 android:textSize="18sp" />
 
             <TextView
@@ -199,7 +198,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text=" - "
+                android:text="@string/dash"
                 android:textAlignment="viewStart"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
@@ -209,8 +208,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="0.00"
-                android:textColor="@color/colorPrimary"
+                android:text="@string/_0_00"
+                android:textColor="#99d7ec"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -223,7 +222,7 @@
             android:id="@+id/textView811"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Thermal Conductivity (W/mK)"
+            android:text="@string/thermal_conductivity_w_mk"
             android:textAllCaps="false"
             android:textColor="@color/foreground_material_light_1"
             android:textSize="24sp" />
@@ -235,12 +234,12 @@
 
             <TextView
                 android:id="@+id/textView821"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:text="0.00"
-                android:textColor="@color/colorPrimary"
+                android:text="@string/_0_00"
+                android:textColor="#99d7ec"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -253,7 +252,7 @@
             android:id="@+id/textView831"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Electric Conductivity (%IACS)"
+            android:text="@string/electric_conductivity_iacs"
             android:textAllCaps="false"
             android:textColor="@color/foreground_material_light_1"
             android:textSize="24sp" />
@@ -266,17 +265,16 @@
 
             <TextView
                 android:id="@+id/textView841"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:text="0.00"
-                android:textColor="@color/colorPrimary"
+                android:text="@string/_0_00"
+                android:textColor="#99d7ec"
                 android:textSize="18sp" />
         </LinearLayout>
 
     </LinearLayout>
 
 
-
-</android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>

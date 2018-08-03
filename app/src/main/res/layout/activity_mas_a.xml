@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="New Metal Alloy"
+        android:text="@string/new_metal_alloy"
         android:textSize="24sp"
         android:textStyle="bold"
         android:typeface="sans"
@@ -28,7 +29,7 @@
         android:layout_marginBottom="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:text="Save"
+        android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -61,21 +62,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
-                    android:text="Alloy Name:"
+                    android:text="@string/alloy_name"
                     android:textColor="@color/primary_material_light_1"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/editText141"
+                    android:inputType="text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:focusedByDefault="true"
-                    android:hint='"Aluminum"'
+                    android:hint="@string/aluminum"
                     android:imeOptions="actionNext"
-                    android:inputType="textPersonName"
                     android:textAlignment="center" />
 
             </LinearLayout>
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_weight="1"
-                android:text="Tensile Strength (N/mm2)"
+                android:text="@string/tensile_strength_mpa"
                 android:textColor="@color/primary_material_light_1"
                 android:textSize="18sp" />
 
@@ -104,11 +104,12 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Min:"
+                    android:text="@string/min"
                     android:textAlignment="textEnd" />
 
                 <EditText
                     android:id="@+id/editText151"
+                    android:hint ="@string/_0_0"
                     android:layout_width="89dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -122,17 +123,18 @@
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Max:"
+                    android:text="@string/max"
                     android:textAlignment="textEnd" />
 
                 <EditText
                     android:id="@+id/editText161"
+                    android:hint ="@string/_100000"
                     android:layout_width="89dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
                     android:imeOptions="actionNext"
-                    android:layout_marginRight = "5dp"
+                    android:layout_marginEnd = "5dp"
                     android:inputType="numberDecimal"
                     android:textAlignment="center" />
             </LinearLayout>
@@ -147,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_weight="1"
-                android:text="Fatigue Strength (N/mm2)"
+                android:text="@string/fatigue_strength_mpa"
                 android:textColor="@color/primary_material_light_1"
                 android:textSize="18sp" />
 
@@ -161,11 +163,12 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Min:"
+                    android:text="@string/min"
                     android:textAlignment="textEnd" />
 
                 <EditText
                     android:id="@+id/editText171"
+                    android:hint ="@string/_0_0"
                     android:layout_width="89dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -179,17 +182,18 @@
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Max:"
+                    android:text="@string/max"
                     android:textAlignment="textEnd" />
 
                 <EditText
                     android:id="@+id/editText181"
+                    android:hint ="@string/_100000"
                     android:layout_width="89dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
                     android:imeOptions="actionNext"
-                    android:layout_marginRight = "5dp"
+                    android:layout_marginEnd = "5dp"
                     android:inputType="numberDecimal"
                     android:textAlignment="center" />
             </LinearLayout>
@@ -204,7 +208,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_weight="1"
-                android:text="Yield Strength (N/mm2)"
+                android:text="@string/yield_strength_mpa"
                 android:textColor="@color/primary_material_light_1"
                 android:textSize="18sp" />
 
@@ -218,11 +222,12 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Min:"
+                    android:text="@string/min"
                     android:textAlignment="textEnd" />
 
                 <EditText
                     android:id="@+id/editText191"
+                    android:hint ="@string/_0_0"
                     android:layout_width="89dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -236,34 +241,32 @@
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Max:"
+                    android:text="@string/max"
                     android:textAlignment="textEnd" />
 
                 <EditText
                     android:id="@+id/editText201"
+                    android:hint ="@string/_100000"
                     android:layout_width="89dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
                     android:imeOptions="actionNext"
                     android:inputType="numberDecimal"
-                    android:layout_marginRight = "5dp"
+                    android:layout_marginEnd = "5dp"
                     android:textAlignment="center" />
             </LinearLayout>
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/button_spacing"
-                android:layout_marginRight = "10dp"/>
-                android:layout_marginLeft = "10dp"/>
-
+                android:layout_height="@dimen/button_spacing" />
             <TextView
                 android:id="@+id/textView53"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_weight="1"
-                android:text="Percent Elongation"
+                android:text="@string/percent_elongation"
                 android:textColor="@color/primary_material_light_1"
                 android:textSize="18sp" />
 
@@ -277,11 +280,12 @@
                     android:layout_width="102dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Min:"
+                    android:text="@string/min"
                     android:textAlignment="textEnd" />
 
                 <EditText
                     android:id="@+id/editText211"
+                    android:hint ="@string/_0_0"
                     android:layout_width="62dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -295,7 +299,7 @@
                     android:layout_width="26dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="%"
+                    android:text="@string/per"
                     android:textSize="18sp" />
 
                 <TextView
@@ -303,11 +307,12 @@
                     android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:text="Max:"
+                    android:text="@string/max"
                     android:textAlignment="textEnd" />
 
                 <EditText
                     android:id="@+id/editText221"
+                    android:hint ="@string/_100000"
                     android:layout_width="62dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -321,8 +326,8 @@
                     android:layout_width="24dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginRight = "5dp"
-                    android:text="%"
+                    android:layout_marginEnd = "5dp"
+                    android:text="@string/per"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -341,15 +346,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
-                    android:text="Thermal Conductivity (W/mK)"
+                    android:text="@string/thermal_conductivity_w_mk"
                     android:textColor="@color/primary_material_light_1"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/editText231"
+                    android:hint ="@string/_0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="1"
                     android:ems="10"
                     android:imeOptions="actionNext"
@@ -372,17 +378,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
-                    android:text="Electric Conductivity (%IACS)"
+                    android:text="@string/electric_conductivity_iacs"
                     android:textColor="@color/primary_material_light_1"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/editText241"
+                    android:hint ="@string/_0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:imeOptions="actionNext"
                     android:inputType="numberDecimal"
                     android:textAlignment="center" />
 
@@ -403,17 +411,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
-                    android:text="Silicon Content"
+                    android:text="@string/silicon_content"
                     android:textColor="@color/primary_material_light_1"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/editText251"
                     android:layout_width="75dp"
+                    android:hint ="@string/_0_0"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="0dp"
-                    android:layout_weight="0"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
                     android:ems="10"
+                    android:imeOptions="actionNext"
                     android:inputType="numberDecimal"
                     android:textAlignment="center" />
 
@@ -421,10 +431,10 @@
                     android:id="@+id/textView43"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="0"
-                    android:text="%"
+                    android:text="@string/per"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -444,17 +454,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
-                    android:text="Iron Content"
+                    android:text="@string/iron_content"
                     android:textColor="@color/primary_material_light_1"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/editText261"
                     android:layout_width="75dp"
+                    android:hint ="@string/_0_0"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:imeOptions="actionNext"
                     android:inputType="numberDecimal"
                     android:textAlignment="center" />
 
@@ -462,10 +474,10 @@
                     android:id="@+id/textView4311"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="0"
-                    android:text="%"
+                    android:text="@string/per"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -485,17 +497,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
-                    android:text="Copper Content"
+                    android:text="@string/copper_content"
                     android:textColor="@color/primary_material_light_1"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/editText271"
                     android:layout_width="75dp"
+                    android:hint ="@string/_0_0"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:imeOptions="actionNext"
                     android:inputType="numberDecimal"
                     android:textAlignment="center" />
 
@@ -503,10 +517,10 @@
                     android:id="@+id/textView4312"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="0"
-                    android:text="%"
+                    android:text="@string/per"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -526,17 +540,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
-                    android:text="Manganese Content"
+                    android:text="@string/manganese_content"
                     android:textColor="@color/primary_material_light_1"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/editText282"
                     android:layout_width="75dp"
+                    android:hint ="@string/_0_0"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:imeOptions="actionNext"
                     android:inputType="numberDecimal"
                     android:textAlignment="center" />
 
@@ -544,10 +560,10 @@
                     android:id="@+id/textView4313"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="0"
-                    android:text="%"
+                    android:text="@string/per"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -567,17 +583,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
-                    android:text="Magnesium Content"
+                    android:text="@string/magnesium_content"
                     android:textColor="@color/primary_material_light_1"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/editText2821"
                     android:layout_width="75dp"
+                    android:hint ="@string/_0_0"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:imeOptions="actionNext"
                     android:inputType="numberDecimal"
                     android:textAlignment="center" />
 
@@ -585,10 +603,10 @@
                     android:id="@+id/textView4314"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="0"
-                    android:text="%"
+                    android:text="@string/per"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -608,17 +626,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
-                    android:text="Zinc Content"
+                    android:text="@string/zinc_content"
                     android:textColor="@color/primary_material_light_1"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/editText2822"
                     android:layout_width="75dp"
+                    android:hint ="@string/_0_0"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:imeOptions="actionNext"
                     android:inputType="numberDecimal"
                     android:textAlignment="center" />
 
@@ -626,10 +646,10 @@
                     android:id="@+id/textView4315"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="0"
-                    android:text="%"
+                    android:text="@string/per"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -649,17 +669,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
-                    android:text="Titanium Content"
+                    android:text="@string/titanium_content"
                     android:textColor="@color/primary_material_light_1"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/editText2823"
                     android:layout_width="75dp"
+                    android:hint ="@string/_0_0"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:imeOptions="actionDone"
                     android:inputType="numberDecimal"
                     android:textAlignment="center" />
 
@@ -667,10 +689,10 @@
                     android:id="@+id/textView4316"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="0"
-                    android:text="%"
+                    android:text="@string/per"
                     android:textSize="18sp" />
 
             </LinearLayout>

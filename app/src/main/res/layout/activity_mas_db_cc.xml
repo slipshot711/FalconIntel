@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     android:background="@color/colorPrimary">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +24,7 @@
             android:id="@+id/textView64"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Silicon"
+            android:text="@string/silicon"
             android:textColor="@color/foreground_material_light_1"
             android:textSize="24sp" />
 
@@ -36,9 +37,9 @@
                 android:id="@+id/textView79"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginStart="@dimen/appbar_padding_top"
                 android:layout_weight="0"
-                android:text="TextView"
+                android:text="@string/textview"
                 android:textColor="?attr/colorControlNormal"
                 android:textSize="18sp" />
 
@@ -55,14 +56,13 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="@dimen/appbar_padding_top"
-            android:layout_weight="0" />
+            android:layout_height="@dimen/appbar_padding_top" />
 
         <TextView
             android:id="@+id/textView86"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iron"
+            android:text="@string/iron"
             android:textColor="@color/foreground_material_light_1"
             android:textSize="24sp" />
 
@@ -75,9 +75,9 @@
                 android:id="@+id/textView87"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginStart="@dimen/appbar_padding_top"
                 android:layout_weight="0"
-                android:text="TextView"
+                android:text="@string/textview"
                 android:textColor="?attr/colorControlNormal"
                 android:textSize="18sp" />
 
@@ -99,7 +99,7 @@
             android:id="@+id/textView101"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Copper"
+            android:text="@string/copper"
             android:textColor="@color/foreground_material_light_1"
             android:textSize="24sp" />
 
@@ -112,9 +112,9 @@
                 android:id="@+id/textView102"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginStart="@dimen/appbar_padding_top"
                 android:layout_weight="0"
-                android:text="TextView"
+                android:text="@string/textview"
                 android:textColor="?attr/colorControlNormal"
                 android:textSize="18sp" />
 
@@ -136,7 +136,7 @@
             android:id="@+id/textView105"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Manganese"
+            android:text="@string/manganese"
             android:textColor="@color/foreground_material_light_1"
             android:textSize="24sp" />
 
@@ -149,9 +149,9 @@
                 android:id="@+id/textView106"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginStart="@dimen/appbar_padding_top"
                 android:layout_weight="0"
-                android:text="TextView"
+                android:text="@string/textview"
                 android:textColor="?attr/colorControlNormal"
                 android:textSize="18sp" />
 
@@ -173,7 +173,7 @@
             android:id="@+id/textView108"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Magnesium"
+            android:text="@string/magnesium"
             android:textColor="@color/foreground_material_light_1"
             android:textSize="24sp" />
 
@@ -186,9 +186,9 @@
                 android:id="@+id/textView109"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginStart="@dimen/appbar_padding_top"
                 android:layout_weight="0"
-                android:text="TextView"
+                android:text="@string/textview"
                 android:textColor="?attr/colorControlNormal"
                 android:textSize="18sp" />
 
@@ -210,7 +210,7 @@
             android:id="@+id/textView111"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Zinc"
+            android:text="@string/zinc"
             android:textColor="@color/foreground_material_light_1"
             android:textSize="24sp" />
 
@@ -223,9 +223,9 @@
                 android:id="@+id/textView112"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginStart="@dimen/appbar_padding_top"
                 android:layout_weight="0"
-                android:text="TextView"
+                android:text="@string/textview"
                 android:textColor="?attr/colorControlNormal"
                 android:textSize="18sp" />
 
@@ -247,7 +247,7 @@
             android:id="@+id/textView114"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Titanium"
+            android:text="@string/titanium"
             android:textColor="@color/foreground_material_light_1"
             android:textSize="24sp" />
 
@@ -260,9 +260,9 @@
                 android:id="@+id/textView115"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/appbar_padding_top"
+                android:layout_marginStart="@dimen/appbar_padding_top"
                 android:layout_weight="0"
-                android:text="TextView"
+                android:text="@string/textview"
                 android:textColor="?attr/colorControlNormal"
                 android:textSize="18sp" />
 
@@ -278,4 +278,4 @@
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>

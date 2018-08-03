@@ -260,7 +260,7 @@ public class MAS_F extends AppCompatActivity {
 
     }
 
-
+@Override
     public void onBackPressed(){
 
         Intent mas = new Intent(getBaseContext(), MAS.class);
@@ -280,7 +280,8 @@ public class MAS_F extends AppCompatActivity {
 
         mas.putExtra("key","value");
         mas.putExtras(filters);
-        startActivityForResult(mas, 1);
+        finish();
+        overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
         return;
     }
 

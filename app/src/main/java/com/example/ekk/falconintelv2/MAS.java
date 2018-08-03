@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Parcelable;
 import android.os.Vibrator;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +26,7 @@ import android.widget.FilterQueryProvider;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
@@ -46,16 +48,18 @@ public class MAS extends AppCompatActivity {
     int corResist = 0;
     int heatTreat = 0;
 
-    final ArrayList<Integer> selected = new ArrayList<Integer>();
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mas);
 
-        overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
+
+        if(savedInstanceState!=null) {
+            mListState = savedInstanceState.getParcelable(LIST_STATE);
+            getListView().onRestoreInstanceState(mListState);
+        }
+
 
         Intent intent = getIntent();
         Bundle extrasBundle = intent.getExtras();
@@ -115,7 +119,6 @@ public class MAS extends AppCompatActivity {
 
         openDB();
 
-        //test.setText((Double.toString(percentEl)));
         populateListView(tStrength, fStrength, yStrength, percentEl);
         listViewItemLongClick();
         listViewItemClick();
@@ -148,6 +151,8 @@ public class MAS extends AppCompatActivity {
     protected void onDestroy(){
         super.onDestroy();
         closeDB();
+        ListView list = findViewById(R.id.listView);
+        mListState = list.onSaveInstanceState();
     }
 
     private void openDB(){
@@ -169,6 +174,9 @@ public class MAS extends AppCompatActivity {
 
         ListView list = findViewById(R.id.listView);
         list.setAdapter(myCursorAdapter);
+
+
+
     }
 
     private void populateListView(){
@@ -194,106 +202,8 @@ public class MAS extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, final long id) {
                 details.putLong("id", id);
+                //aaaaaaahhhahahhahhhhhhhhahhhhhh
                 openMAS_DB();
-//                LayoutInflater inflater = getLayoutInflater();
-//
-//                View fullScreen = inflater.inflate(R.layout.full_screen_layout, null);
-//
-//                final TextView title = fullScreen.findViewById(R.id.textView49);
-//                final TextView tStrengthMax = fullScreen.findViewById(R.id.textView62);
-//                final TextView tStrengthMin = fullScreen.findViewById(R.id.textView65);
-//                final TextView fStrengthMax = fullScreen.findViewById(R.id.textView68);
-//                final TextView fStrengthMin = fullScreen.findViewById(R.id.textView70);
-//                final TextView yStrengthMax = fullScreen.findViewById(R.id.textView73);
-//                final TextView yStrengthMin = fullScreen.findViewById(R.id.textView75);
-//                final TextView percentElMax = fullScreen.findViewById(R.id.textView78);
-//                final TextView percentElMin = fullScreen.findViewById(R.id.textView80);
-//                final TextView tConduct = fullScreen.findViewById(R.id.textView82);
-//                final TextView eConduct = fullScreen.findViewById(R.id.textView84);
-//                final ImageButton close  = fullScreen.findViewById(R.id.imageButton);
-//                final ImageButton edit = fullScreen.findViewById(R.id.imageButton2);
-//                final Button delete  = fullScreen.findViewById(R.id.button14);
-//
-//                title.setText(myDB.getName(id));
-//                tStrengthMax.setText(myDB.getMaxTensileStrength(id));
-//                fStrengthMax.setText(myDB.getMaxFatigueStrength(id));
-//                yStrengthMax.setText(myDB.getMaxYieldStrength(id));
-//                percentElMax.setText(myDB.getMaxPercentElongation(id));
-//                tStrengthMin.setText(myDB.getMinTensileStrength(id));
-//                fStrengthMin.setText(myDB.getMinFatigueStrength(id));
-//                yStrengthMin.setText(myDB.getMinYieldStrength(id));
-//                percentElMin.setText(myDB.getMinPercentElongation(id));
-//                tConduct.setText(myDB.getThermalConductivity(id));
-//                eConduct.setText(myDB.getElectricConductivity(id));
-//
-//                details.putLong("id", id);
-//                details.putString("name", myDB.getName(id));
-//                details.putString("tMax", myDB.getMaxTensileStrength(id));
-//                details.putString("fMax", myDB.getMaxFatigueStrength(id));
-//                details.putString("yMax", myDB.getMaxYieldStrength(id));
-//                details.putString("pMax", myDB.getMaxPercentElongation(id));
-//                details.putString("tMin", myDB.getMinTensileStrength(id));
-//                details.putString("fMin", myDB.getMinFatigueStrength(id));
-//                details.putString("yMin", myDB.getMinYieldStrength(id));
-//                details.putString("pMin", myDB.getMinPercentElongation(id));
-//                details.putString("tCon", myDB.getThermalConductivity(id));
-//                details.putString("eCon", myDB.getElectricConductivity(id));
-//
-//                AlertDialog.Builder builder = new AlertDialog.Builder(MAS.this);
-//                builder.setView(fullScreen);
-//
-//                final AlertDialog dialog = builder.create();
-//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                dialog.show();
-//
-//                //mayonnaise is gods sandwich cream
-//                close.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//
-//                edit.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Intent masa = new Intent(getBaseContext(), MAS_A.class);
-//                        masa.putExtras(details);
-//                        masa.putExtra("key","value");
-//                        startActivity(masa);
-//                    }
-//                });
-//
-//                delete.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        LayoutInflater inflater = getLayoutInflater();
-//                        View alertLayout = inflater.inflate(R.layout.alert_layout, null);
-//                        final TextView Title = alertLayout.findViewById(R.id.textView112);
-//                        Title.setText("Are you sure you want to delete " + myDB.getName(id) + "?");
-//
-//                        AlertDialog.Builder builder = new AlertDialog.Builder(MAS.this);
-//                        builder.setCancelable(true);
-//                        builder.setView(alertLayout);
-//                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                myDB.deleteRow(id);
-//                                populateListView();
-//                            }
-//                        });
-//                        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                dialog.dismiss();
-//                            }
-//                        });
-//
-//                        AlertDialog deleteDialog = builder.create();
-//                        deleteDialog.show();
-//                        dialog.dismiss();
-//                    }
-//                });
             }
         });
     }
@@ -340,7 +250,7 @@ public class MAS extends AppCompatActivity {
 
 
                 View alertLayout = inflater.inflate(R.layout.alert_layout, null);
-                final TextView Title = alertLayout.findViewById(R.id.textView112);
+                final TextView Title = alertLayout.findViewById(R.id.textView1121);
                 Title.setText("Are you sure you want to delete " + myDB.getName(id) + "?");
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(MAS.this);
@@ -363,18 +273,33 @@ public class MAS extends AppCompatActivity {
                 AlertDialog dialog = builder.create();
                 dialog.show();
                 return true;
-                //uhhh yea i sure hope it does
+                //uh yea i sure hope it does
             }
         });
 
     }
 
+    private void listViewItemLongClick(int i) {
+            i++;
+            if(i < 3){
+                i--;
+                //white dove comment\\
+                //\\
+            }
+    }
 
-    public void onBackPressed(){
 
-        Intent mainActivity = new Intent(getBaseContext(), MainActivity.class);
-        startActivity(mainActivity);
-        return;
+//    public void onBackPressed(){
+//
+//        Intent mainActivity = new Intent(getBaseContext(), MainActivity.class);
+//        startActivity(mainActivity);
+//        return;
+//    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
     }
 
     @Override
@@ -388,5 +313,48 @@ public class MAS extends AppCompatActivity {
         return(super.onOptionsItemSelected(item));
     }
 
+    private static final String LIST_STATE = "listState";
+    private Parcelable mListState = null;
+
+    public ListView getListView(){
+        ListView list = findViewById(R.id.listView);
+        return list;
+    }
+
+    @Override
+    public void onPause() {
+        ListView list = findViewById(R.id.listView);
+        mListState = list.onSaveInstanceState();
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        ListView list = findViewById(R.id.listView);
+        mListState = list.onSaveInstanceState();
+        super.onStop();
+    }
+
+    //
+//    @Override
+//    public void onResume() {
+//        ListView list = findViewById(R.id.listView);
+//        list.setAdapter(myCursorAdapter);
+//        list.onRestoreInstanceState(state);
+//        super.onResume();
+//    }
+
+
+
+//    @Override
+//    public void onViewCreated(final View view, Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//        // Set new items
+//        lv.setAdapter(myCursorAdapter);
+//        // Restore previous state (including selected item index and scroll position)
+//        if(state != null) {
+//            lv.onRestoreInstanceState(state);
+//        }
+//    }
 
 }

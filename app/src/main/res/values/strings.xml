@@ -102,4 +102,5 @@
     <string name="in_s">in/s</string>
     <string name="plunger_diameter_in">Plunger Diameter (in):</string>
     <string name="shot_sleeve_length_in">Shot Sleeve Length (in):</string>
+    <string name="developed_by_ved_ameresh_for_flm_inc">Developed by Ved Ameresh for FLM Inc.</string>
 </resources>

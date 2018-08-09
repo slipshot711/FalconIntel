@@ -53,7 +53,7 @@ public class MAFT extends MainActivity {
 
 
                 if(selectedItem=="Magnesium"){
-                    k[0] = 0.063;
+                    k[0] = 0.633;
                     tF[0] = 1050;
                     z[0] = 6.6;
 
@@ -75,7 +75,7 @@ public class MAFT extends MainActivity {
                 }
                 else if(selectedItem=="Zinc 3, 5, 7"){
                     k[0] = 0.866;
-                    tF[0] = 760;
+                    tF[0] = 720;
                     z[0] = 4.5;
 
                 }
@@ -83,7 +83,6 @@ public class MAFT extends MainActivity {
                     k[0] = 0;
                     tF[0] = 0;
                     z[0] = 0;
-                    //flaccid teeth
 
                 }
             }

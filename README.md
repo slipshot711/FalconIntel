@@ -7,7 +7,7 @@ Built using Java, XML, and SQLite3 on Android Studio.
 
 Main Page
 
-![alt text](https://github.com/vameresh/FalconIntel/blob/main/pictures/splash.png?raw=true)
+![alt text](https://github.com/vameresh/FalconIntel/blob/master/pictures/splash.png?raw=true =250x)
 
 
 Perform Calculations

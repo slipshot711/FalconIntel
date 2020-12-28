@@ -5,7 +5,27 @@ Built using Java, XML, and SQLite3 on Android Studio.
 
 ## Pictures
 
-Perform calculations, filter, and select alloys.
+Main Page
 
-![alt text](https://github.com/vameresh/FalconIntel/blob/master/pictures/all.png?raw=true)
+![alt text](https://github.com/vameresh/FalconIntel/blob/master/pictures/splash.png?raw=true)
+
+
+Perform Calculations
+
+![alt text](https://github.com/vameresh/FalconIntel/blob/master/pictures/calculation.png?raw=true)
+
+
+Categorize Alloys
+
+![alt text](https://github.com/vameresh/FalconIntel/blob/master/pictures/alloy_db.png?raw=true)
+
+
+Filter Alloys
+
+![alt text](https://github.com/vameresh/FalconIntel/blob/master/pictures/filter.png?raw=true)
+
+
+Access Alloy Details
+
+![alt text](https://github.com/vameresh/FalconIntel/blob/master/pictures/alloy.png?raw=true)
 

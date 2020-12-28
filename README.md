@@ -27,5 +27,5 @@ Filter Alloys
 
 Access Alloy Details
 
-![alt text](https://github.com/vameresh/FalconIntel/blob/master/pictures/alloy.png?raw=true)
+![alt text](https://github.com/vameresh/FalconIntel/blob/master/pictures/alloy.png)
 

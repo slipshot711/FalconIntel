@@ -12,20 +12,20 @@ Main Page
 
 Perform Calculations
 
-![alt text](https://github.com/vameresh/FalconIntel/blob/main/pictures/calculation.png?raw=true)
+![alt text](https://github.com/vameresh/FalconIntel/blob/master/pictures/calculation.png?raw=true)
 
 
 Categorize Alloys
 
-![alt text](https://github.com/vameresh/FalconIntel/blob/main/pictures/alloy_db.png?raw=true)
+![alt text](https://github.com/vameresh/FalconIntel/blob/master/pictures/alloy_db.png?raw=true)
 
 
 Filter Alloys
 
-![alt text](https://github.com/vameresh/FalconIntel/blob/main/pictures/filter.png?raw=true)
+![alt text](https://github.com/vameresh/FalconIntel/blob/master/pictures/filter.png?raw=true)
 
 
 Access Alloy Details
 
-![alt text](https://github.com/vameresh/FalconIntel/blob/main/pictures/alloy.png?raw=true)
+![alt text](https://github.com/vameresh/FalconIntel/blob/master/pictures/alloy.png?raw=true)
 
